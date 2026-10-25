@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64EB308DE06100FECADB /* GarageAppApp.swift */; };
+		D76B64EE308DE06100FECADB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64ED308DE06100FECADB /* ContentView.swift */; };
+		D76B64F0308DE06100FECADB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64EF308DE06100FECADB /* Item.swift */; };
+		D76B64F2308DE06400FECADB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D76B64F1308DE06400FECADB /* Assets.xcassets */; };
+		D76B64F5308DE06400FECADB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D76B64F4308DE06400FECADB /* Preview Assets.xcassets */; };
+		D76B6501308DE06500FECADB /* GarageAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6500308DE06500FECADB /* GarageAppTests.swift */; };
+		D76B650B308DE06500FECADB /* GarageAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B650A308DE06500FECADB /* GarageAppUITests.swift */; };
+		D76B650D308DE06500FECADB /* GarageAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B650C308DE06500FECADB /* GarageAppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D76B64FD308DE06500FECADB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D76B64E0308DE06100FECADB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D76B64E7308DE06100FECADB;
+			remoteInfo = GarageApp;
+		};
+		D76B6507308DE06500FECADB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D76B64E0308DE06100FECADB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D76B64E7308DE06100FECADB;
+			remoteInfo = GarageApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D76B64E8308DE06100FECADB /* GarageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarageApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D76B64EB308DE06100FECADB /* GarageAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppApp.swift; sourceTree = "<group>"; };
+		D76B64ED308DE06100FECADB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D76B64EF308DE06100FECADB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D76B64F1308DE06400FECADB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D76B64F4308DE06400FECADB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D76B64F6308DE06400FECADB /* GarageApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GarageApp.entitlements; sourceTree = "<group>"; };
+		D76B64F7308DE06400FECADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D76B64FC308DE06500FECADB /* GarageAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarageAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D76B6500308DE06500FECADB /* GarageAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppTests.swift; sourceTree = "<group>"; };
+		D76B6506308DE06500FECADB /* GarageAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarageAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D76B650A308DE06500FECADB /* GarageAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppUITests.swift; sourceTree = "<group>"; };
+		D76B650C308DE06500FECADB /* GarageAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D76B64E5308DE06100FECADB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D76B64F9308DE06500FECADB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D76B6503308DE06500FECADB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D76B64DF308DE06100FECADB = {
+			isa = PBXGroup;
+			children = (
+				D76B64EA308DE06100FECADB /* GarageApp */,
+				D76B64FF308DE06500FECADB /* GarageAppTests */,
+				D76B6509308DE06500FECADB /* GarageAppUITests */,
+				D76B64E9308DE06100FECADB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D76B64E9308DE06100FECADB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D76B64E8308DE06100FECADB /* GarageApp.app */,
+				D76B64FC308DE06500FECADB /* GarageAppTests.xctest */,
+				D76B6506308DE06500FECADB /* GarageAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D76B64EA308DE06100FECADB /* GarageApp */ = {
+			isa = PBXGroup;
+			children = (
+				D76B64EB308DE06100FECADB /* GarageAppApp.swift */,
+				D76B64ED308DE06100FECADB /* ContentView.swift */,
+				D76B64EF308DE06100FECADB /* Item.swift */,
+				D76B64F1308DE06400FECADB /* Assets.xcassets */,
+				D76B64F6308DE06400FECADB /* GarageApp.entitlements */,
+				D76B64F7308DE06400FECADB /* Info.plist */,
+				D76B64F3308DE06400FECADB /* Preview Content */,
+			);
+			path = GarageApp;
+			sourceTree = "<group>";
+		};
+		D76B64F3308DE06400FECADB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D76B64F4308DE06400FECADB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D76B64FF308DE06500FECADB /* GarageAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				D76B6500308DE06500FECADB /* GarageAppTests.swift */,
+			);
+			path = GarageAppTests;
+			sourceTree = "<group>";
+		};
+		D76B6509308DE06500FECADB /* GarageAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D76B650A308DE06500FECADB /* GarageAppUITests.swift */,
+				D76B650C308DE06500FECADB /* GarageAppUITestsLaunchTests.swift */,
+			);
+			path = GarageAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D76B64E7308DE06100FECADB /* GarageApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D76B6510308DE06500FECADB /* Build configuration list for PBXNativeTarget "GarageApp" */;
+			buildPhases = (
+				D76B64E4308DE06100FECADB /* Sources */,
+				D76B64E5308DE06100FECADB /* Frameworks */,
+				D76B64E6308DE06100FECADB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GarageApp;
+			productName = GarageApp;
+			productReference = D76B64E8308DE06100FECADB /* GarageApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D76B64FB308DE06500FECADB /* GarageAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D76B6513308DE06500FECADB /* Build configuration list for PBXNativeTarget "GarageAppTests" */;
+			buildPhases = (
+				D76B64F8308DE06500FECADB /* Sources */,
+				D76B64F9308DE06500FECADB /* Frameworks */,
+				D76B64FA308DE06500FECADB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D76B64FE308DE06500FECADB /* PBXTargetDependency */,
+			);
+			name = GarageAppTests;
+			productName = GarageAppTests;
+			productReference = D76B64FC308DE06500FECADB /* GarageAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D76B6505308DE06500FECADB /* GarageAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D76B6516308DE06500FECADB /* Build configuration list for PBXNativeTarget "GarageAppUITests" */;
+			buildPhases = (
+				D76B6502308DE06500FECADB /* Sources */,
+				D76B6503308DE06500FECADB /* Frameworks */,
+				D76B6504308DE06500FECADB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D76B6508308DE06500FECADB /* PBXTargetDependency */,
+			);
+			name = GarageAppUITests;
+			productName = GarageAppUITests;
+			productReference = D76B6506308DE06500FECADB /* GarageAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D76B64E0308DE06100FECADB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					D76B64E7308DE06100FECADB = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					D76B64FB308DE06500FECADB = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = D76B64E7308DE06100FECADB;
+					};
+					D76B6505308DE06500FECADB = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = D76B64E7308DE06100FECADB;
+					};
+				};
+			};
+			buildConfigurationList = D76B64E3308DE06100FECADB /* Build configuration list for PBXProject "GarageApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D76B64DF308DE06100FECADB;
+			productRefGroup = D76B64E9308DE06100FECADB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D76B64E7308DE06100FECADB /* GarageApp */,
+				D76B64FB308DE06500FECADB /* GarageAppTests */,
+				D76B6505308DE06500FECADB /* GarageAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D76B64E6308DE06100FECADB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D76B64F5308DE06400FECADB /* Preview Assets.xcassets in Resources */,
+				D76B64F2308DE06400FECADB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D76B64FA308DE06500FECADB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D76B6504308DE06500FECADB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D76B64E4308DE06100FECADB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D76B64EE308DE06100FECADB /* ContentView.swift in Sources */,
+				D76B64F0308DE06100FECADB /* Item.swift in Sources */,
+				D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D76B64F8308DE06500FECADB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D76B6501308DE06500FECADB /* GarageAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D76B6502308DE06500FECADB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D76B650B308DE06500FECADB /* GarageAppUITests.swift in Sources */,
+				D76B650D308DE06500FECADB /* GarageAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D76B64FE308DE06500FECADB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D76B64E7308DE06100FECADB /* GarageApp */;
+			targetProxy = D76B64FD308DE06500FECADB /* PBXContainerItemProxy */;
+		};
+		D76B6508308DE06500FECADB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D76B64E7308DE06100FECADB /* GarageApp */;
+			targetProxy = D76B6507308DE06500FECADB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D76B650E308DE06500FECADB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D76B650F308DE06500FECADB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D76B6511308DE06500FECADB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GarageApp/GarageApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GarageApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GarageApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = susitha.GarageApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D76B6512308DE06500FECADB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GarageApp/GarageApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GarageApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GarageApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = susitha.GarageApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D76B6514308DE06500FECADB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = susitha.GarageAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GarageApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GarageApp";
+			};
+			name = Debug;
+		};
+		D76B6515308DE06500FECADB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = susitha.GarageAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GarageApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GarageApp";
+			};
+			name = Release;
+		};
+		D76B6517308DE06500FECADB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = susitha.GarageAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GarageApp;
+			};
+			name = Debug;
+		};
+		D76B6518308DE06500FECADB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = susitha.GarageAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GarageApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D76B64E3308DE06100FECADB /* Build configuration list for PBXProject "GarageApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D76B650E308DE06500FECADB /* Debug */,
+				D76B650F308DE06500FECADB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D76B6510308DE06500FECADB /* Build configuration list for PBXNativeTarget "GarageApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D76B6511308DE06500FECADB /* Debug */,
+				D76B6512308DE06500FECADB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D76B6513308DE06500FECADB /* Build configuration list for PBXNativeTarget "GarageAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D76B6514308DE06500FECADB /* Debug */,
+				D76B6515308DE06500FECADB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D76B6516308DE06500FECADB /* Build configuration list for PBXNativeTarget "GarageAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D76B6517308DE06500FECADB /* Debug */,
+				D76B6518308DE06500FECADB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D76B64E0308DE06100FECADB /* Project object */;
+}
