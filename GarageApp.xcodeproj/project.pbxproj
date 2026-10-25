@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D73B1F86308DE905008C3A39 /* VehicleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F85308DE905008C3A39 /* VehicleListView.swift */; };
+		D73B1F88308DE974008C3A39 /*  NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F87308DE974008C3A39 /*  NotificationsView.swift */; };
+		D73B1F8A308DE992008C3A39 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F89308DE992008C3A39 /* ProfileView.swift */; };
+		D73B1F8C308DE9B3008C3A39 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F8B308DE9B3008C3A39 /* SettingsView.swift */; };
+		D73B1F8E308DED62008C3A39 /* AppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F8D308DED62008C3A39 /* AppointmentsView.swift */; };
+		D73B1F90308DED89008C3A39 /* GarageDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F8F308DED89008C3A39 /* GarageDashboardView.swift */; };
+		D73B1F92308E37C3008C3A39 /* GarageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F91308E37C3008C3A39 /* GarageTabView.swift */; };
+		D73B1F94308E37F4008C3A39 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F93308E37F4008C3A39 /* InsightsView.swift */; };
+		D73B1F96308E3811008C3A39 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F95308E3811008C3A39 /* InventoryView.swift */; };
+		D73B1F98308E4270008C3A39 /*  DriverActiveJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F97308E4270008C3A39 /*  DriverActiveJobView.swift */; };
+		D73B1F9A308E429E008C3A39 /* DriverJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F99308E429E008C3A39 /* DriverJobsView.swift */; };
+		D73B1F9C308E42BC008C3A39 /*  DriverTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F9B308E42BC008C3A39 /*  DriverTabView.swift */; };
 		D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64EB308DE06100FECADB /* GarageAppApp.swift */; };
 		D76B64EE308DE06100FECADB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64ED308DE06100FECADB /* ContentView.swift */; };
 		D76B64F0308DE06100FECADB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64EF308DE06100FECADB /* Item.swift */; };
@@ -15,6 +27,19 @@
 		D76B6501308DE06500FECADB /* GarageAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6500308DE06500FECADB /* GarageAppTests.swift */; };
 		D76B650B308DE06500FECADB /* GarageAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B650A308DE06500FECADB /* GarageAppUITests.swift */; };
 		D76B650D308DE06500FECADB /* GarageAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B650C308DE06500FECADB /* GarageAppUITestsLaunchTests.swift */; };
+		D76B651C308DE1E200FECADB /* RoleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B651B308DE1E200FECADB /* RoleSelectionView.swift */; };
+		D76B6524308DE3B100FECADB /* UserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6523308DE3B100FECADB /* UserRole.swift */; };
+		D76B6528308DE3F100FECADB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6527308DE3F100FECADB /* AppState.swift */; };
+		D76B652A308DE42800FECADB /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6529308DE42800FECADB /* MockData.swift */; };
+		D76B652C308DE6D200FECADB /* MaintenancePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B652B308DE6D200FECADB /* MaintenancePredictor.swift */; };
+		D76B652E308DE76700FECADB /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B652D308DE76700FECADB /* Components.swift */; };
+		D76B6530308DE7B700FECADB /* AddVehicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B652F308DE7B700FECADB /* AddVehicleView.swift */; };
+		D76B6532308DE7E700FECADB /* CustomerHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6531308DE7E700FECADB /* CustomerHomeView.swift */; };
+		D76B6534308DE81600FECADB /* ExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6533308DE81600FECADB /* ExpensesView.swift */; };
+		D76B6536308DE84500FECADB /* CustomerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6535308DE84500FECADB /* CustomerTabView.swift */; };
+		D76B6538308DE86D00FECADB /* ScheduleServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6537308DE86D00FECADB /* ScheduleServiceView.swift */; };
+		D76B653A308DE89300FECADB /* TowRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6539308DE89300FECADB /* TowRequestView.swift */; };
+		D76B653C308DE8B500FECADB /* VehicleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B653B308DE8B500FECADB /* VehicleDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +60,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D73B1F85308DE905008C3A39 /* VehicleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListView.swift; sourceTree = "<group>"; };
+		D73B1F87308DE974008C3A39 /*  NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " NotificationsView.swift"; sourceTree = "<group>"; };
+		D73B1F89308DE992008C3A39 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		D73B1F8B308DE9B3008C3A39 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D73B1F8D308DED62008C3A39 /* AppointmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsView.swift; sourceTree = "<group>"; };
+		D73B1F8F308DED89008C3A39 /* GarageDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageDashboardView.swift; sourceTree = "<group>"; };
+		D73B1F91308E37C3008C3A39 /* GarageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageTabView.swift; sourceTree = "<group>"; };
+		D73B1F93308E37F4008C3A39 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
+		D73B1F95308E3811008C3A39 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
+		D73B1F97308E4270008C3A39 /*  DriverActiveJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " DriverActiveJobView.swift"; sourceTree = "<group>"; };
+		D73B1F99308E429E008C3A39 /* DriverJobsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverJobsView.swift; sourceTree = "<group>"; };
+		D73B1F9B308E42BC008C3A39 /*  DriverTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " DriverTabView.swift"; sourceTree = "<group>"; };
 		D76B64E8308DE06100FECADB /* GarageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarageApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76B64EB308DE06100FECADB /* GarageAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppApp.swift; sourceTree = "<group>"; };
 		D76B64ED308DE06100FECADB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +85,19 @@
 		D76B6506308DE06500FECADB /* GarageAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarageAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76B650A308DE06500FECADB /* GarageAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppUITests.swift; sourceTree = "<group>"; };
 		D76B650C308DE06500FECADB /* GarageAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D76B651B308DE1E200FECADB /* RoleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectionView.swift; sourceTree = "<group>"; };
+		D76B6523308DE3B100FECADB /* UserRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
+		D76B6527308DE3F100FECADB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D76B6529308DE42800FECADB /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		D76B652B308DE6D200FECADB /* MaintenancePredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenancePredictor.swift; sourceTree = "<group>"; };
+		D76B652D308DE76700FECADB /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		D76B652F308DE7B700FECADB /* AddVehicleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleView.swift; sourceTree = "<group>"; };
+		D76B6531308DE7E700FECADB /* CustomerHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerHomeView.swift; sourceTree = "<group>"; };
+		D76B6533308DE81600FECADB /* ExpensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesView.swift; sourceTree = "<group>"; };
+		D76B6535308DE84500FECADB /* CustomerTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTabView.swift; sourceTree = "<group>"; };
+		D76B6537308DE86D00FECADB /* ScheduleServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleServiceView.swift; sourceTree = "<group>"; };
+		D76B6539308DE89300FECADB /* TowRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowRequestView.swift; sourceTree = "<group>"; };
+		D76B653B308DE8B500FECADB /* VehicleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +148,9 @@
 		D76B64EA308DE06100FECADB /* GarageApp */ = {
 			isa = PBXGroup;
 			children = (
+				D76B6525308DE3C900FECADB /* Services */,
+				D76B6522308DE39200FECADB /* Models */,
+				D76B651A308DE18F00FECADB /* Views */,
 				D76B64EB308DE06100FECADB /* GarageAppApp.swift */,
 				D76B64ED308DE06100FECADB /* ContentView.swift */,
 				D76B64EF308DE06100FECADB /* Item.swift */,
@@ -132,6 +185,52 @@
 				D76B650C308DE06500FECADB /* GarageAppUITestsLaunchTests.swift */,
 			);
 			path = GarageAppUITests;
+			sourceTree = "<group>";
+		};
+		D76B651A308DE18F00FECADB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D76B651B308DE1E200FECADB /* RoleSelectionView.swift */,
+				D76B652D308DE76700FECADB /* Components.swift */,
+				D76B652F308DE7B700FECADB /* AddVehicleView.swift */,
+				D76B6531308DE7E700FECADB /* CustomerHomeView.swift */,
+				D76B6533308DE81600FECADB /* ExpensesView.swift */,
+				D76B6535308DE84500FECADB /* CustomerTabView.swift */,
+				D76B6537308DE86D00FECADB /* ScheduleServiceView.swift */,
+				D76B6539308DE89300FECADB /* TowRequestView.swift */,
+				D76B653B308DE8B500FECADB /* VehicleDetailView.swift */,
+				D73B1F85308DE905008C3A39 /* VehicleListView.swift */,
+				D73B1F87308DE974008C3A39 /*  NotificationsView.swift */,
+				D73B1F89308DE992008C3A39 /* ProfileView.swift */,
+				D73B1F8B308DE9B3008C3A39 /* SettingsView.swift */,
+				D73B1F8D308DED62008C3A39 /* AppointmentsView.swift */,
+				D73B1F8F308DED89008C3A39 /* GarageDashboardView.swift */,
+				D73B1F91308E37C3008C3A39 /* GarageTabView.swift */,
+				D73B1F93308E37F4008C3A39 /* InsightsView.swift */,
+				D73B1F95308E3811008C3A39 /* InventoryView.swift */,
+				D73B1F97308E4270008C3A39 /*  DriverActiveJobView.swift */,
+				D73B1F99308E429E008C3A39 /* DriverJobsView.swift */,
+				D73B1F9B308E42BC008C3A39 /*  DriverTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D76B6522308DE39200FECADB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D76B6523308DE3B100FECADB /* UserRole.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D76B6525308DE3C900FECADB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D76B6527308DE3F100FECADB /* AppState.swift */,
+				D76B6529308DE42800FECADB /* MockData.swift */,
+				D76B652B308DE6D200FECADB /* MaintenancePredictor.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +363,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D76B653C308DE8B500FECADB /* VehicleDetailView.swift in Sources */,
+				D73B1F92308E37C3008C3A39 /* GarageTabView.swift in Sources */,
+				D76B6524308DE3B100FECADB /* UserRole.swift in Sources */,
+				D73B1F98308E4270008C3A39 /*  DriverActiveJobView.swift in Sources */,
+				D73B1F86308DE905008C3A39 /* VehicleListView.swift in Sources */,
 				D76B64EE308DE06100FECADB /* ContentView.swift in Sources */,
 				D76B64F0308DE06100FECADB /* Item.swift in Sources */,
+				D73B1F9A308E429E008C3A39 /* DriverJobsView.swift in Sources */,
+				D73B1F8C308DE9B3008C3A39 /* SettingsView.swift in Sources */,
+				D73B1F90308DED89008C3A39 /* GarageDashboardView.swift in Sources */,
+				D76B6528308DE3F100FECADB /* AppState.swift in Sources */,
+				D73B1F94308E37F4008C3A39 /* InsightsView.swift in Sources */,
+				D76B652C308DE6D200FECADB /* MaintenancePredictor.swift in Sources */,
+				D73B1F96308E3811008C3A39 /* InventoryView.swift in Sources */,
+				D76B6538308DE86D00FECADB /* ScheduleServiceView.swift in Sources */,
 				D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */,
+				D76B652A308DE42800FECADB /* MockData.swift in Sources */,
+				D73B1F9C308E42BC008C3A39 /*  DriverTabView.swift in Sources */,
+				D76B653A308DE89300FECADB /* TowRequestView.swift in Sources */,
+				D76B6534308DE81600FECADB /* ExpensesView.swift in Sources */,
+				D73B1F88308DE974008C3A39 /*  NotificationsView.swift in Sources */,
+				D73B1F8E308DED62008C3A39 /* AppointmentsView.swift in Sources */,
+				D76B6536308DE84500FECADB /* CustomerTabView.swift in Sources */,
+				D76B6532308DE7E700FECADB /* CustomerHomeView.swift in Sources */,
+				D76B6530308DE7B700FECADB /* AddVehicleView.swift in Sources */,
+				D73B1F8A308DE992008C3A39 /* ProfileView.swift in Sources */,
+				D76B652E308DE76700FECADB /* Components.swift in Sources */,
+				D76B651C308DE1E200FECADB /* RoleSelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

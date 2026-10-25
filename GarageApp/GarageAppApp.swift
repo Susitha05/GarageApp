@@ -1,32 +1,37 @@
-//
-//  GarageAppApp.swift
-//  GarageApp
-//
-//  Created by TUTU on 24/10/2026.
-//
-
 import SwiftUI
-import SwiftData
 
 @main
-struct GarageAppApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+struct GarageApp: App {
+    @State private var appState = AppState()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environment(appState)
         }
-        .modelContainer(sharedModelContainer)
     }
+}
+
+/// Switches between the role picker (mock sign-in) and each role's tab UI.
+struct RootView: View {
+    @Environment(AppState.self) private var app
+
+    var body: some View {
+        Group {
+            if let role = app.role {
+                switch role {
+                case .customer: CustomerTabView()
+                case .garageOwner: GarageTabView()
+                case .towDriver: DriverTabView()
+                }
+            } else {
+                RoleSelectionView()
+            }
+        }
+        .animation(.easeInOut, value: app.role)
+    }
+}
+
+#Preview("Root – signed out") {
+    RootView().environment(AppState())
 }
