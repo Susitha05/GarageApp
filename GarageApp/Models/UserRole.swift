@@ -109,6 +109,17 @@ struct Appointment: Identifiable {
     var status: AppointmentStatus
     var assignedStaff: String? = nil
     var noShowRisk: Double = 0.1
+    var bookedDaysAhead: Int = 2
+    var pastNoShows: Int = 0
+    var isFirstVisit: Bool = false
+}
+
+struct GarageInfo: Identifiable {
+    var id: String { name }
+    var name: String
+    var latitude: Double
+    var longitude: Double
+    var coordinate: CLLocationCoordinate2D { .init(latitude: latitude, longitude: longitude) }
 }
 
 struct InventoryItem: Identifiable {

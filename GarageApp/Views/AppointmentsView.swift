@@ -33,7 +33,7 @@ struct AppointmentsView: View {
                             Label("Assigned: \(staff)", systemImage: "person.fill").font(.caption)
                         }
                         if a.noShowRisk > 0.4 {
-                            Label("No-show risk \(Int(a.noShowRisk * 100))%", systemImage: "exclamationmark.triangle.fill")
+                            Label("AI no-show risk \(Int(a.noShowRisk * 100))%", systemImage: "exclamationmark.triangle.fill")
                                 .font(.caption).foregroundStyle(.red)
                         }
                         actions(for: a)

@@ -19,6 +19,11 @@
 		D73B1F98308E4270008C3A39 /*  DriverActiveJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F97308E4270008C3A39 /*  DriverActiveJobView.swift */; };
 		D73B1F9A308E429E008C3A39 /* DriverJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F99308E429E008C3A39 /* DriverJobsView.swift */; };
 		D73B1F9C308E42BC008C3A39 /*  DriverTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F9B308E42BC008C3A39 /*  DriverTabView.swift */; };
+		D73B1FA5308E5067008C3A39 /* MLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FA4308E5067008C3A39 /* MLService.swift */; };
+		D73B1FA7308E5084008C3A39 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FA6308E5084008C3A39 /* LocationManager.swift */; };
+		D73B1FAA308E50FB008C3A39 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FA9308E50FB008C3A39 /* WidgetSnapshot.swift */; };
+		D73B1FAD308E5407008C3A39 /* GarageStatusWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FAC308E5407008C3A39 /* GarageStatusWidgetView.swift */; };
+		D73B1FAF308E542F008C3A39 /* GarageWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FAE308E542F008C3A39 /* GarageWidgetBundle.swift */; };
 		D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64EB308DE06100FECADB /* GarageAppApp.swift */; };
 		D76B64EE308DE06100FECADB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64ED308DE06100FECADB /* ContentView.swift */; };
 		D76B64F0308DE06100FECADB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64EF308DE06100FECADB /* Item.swift */; };
@@ -72,6 +77,11 @@
 		D73B1F97308E4270008C3A39 /*  DriverActiveJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " DriverActiveJobView.swift"; sourceTree = "<group>"; };
 		D73B1F99308E429E008C3A39 /* DriverJobsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverJobsView.swift; sourceTree = "<group>"; };
 		D73B1F9B308E42BC008C3A39 /*  DriverTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " DriverTabView.swift"; sourceTree = "<group>"; };
+		D73B1FA4308E5067008C3A39 /* MLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLService.swift; sourceTree = "<group>"; };
+		D73B1FA6308E5084008C3A39 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D73B1FA9308E50FB008C3A39 /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
+		D73B1FAC308E5407008C3A39 /* GarageStatusWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageStatusWidgetView.swift; sourceTree = "<group>"; };
+		D73B1FAE308E542F008C3A39 /* GarageWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageWidgetBundle.swift; sourceTree = "<group>"; };
 		D76B64E8308DE06100FECADB /* GarageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarageApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76B64EB308DE06100FECADB /* GarageAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppApp.swift; sourceTree = "<group>"; };
 		D76B64ED308DE06100FECADB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,6 +135,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D73B1FA3308E4D05008C3A39 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MLModels;
+			sourceTree = "<group>";
+		};
+		D73B1FA8308E50EB008C3A39 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				D73B1FA9308E50FB008C3A39 /* WidgetSnapshot.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		D73B1FAB308E53CC008C3A39 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				D73B1FAC308E5407008C3A39 /* GarageStatusWidgetView.swift */,
+				D73B1FAE308E542F008C3A39 /* GarageWidgetBundle.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		D76B64DF308DE06100FECADB = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +182,9 @@
 		D76B64EA308DE06100FECADB /* GarageApp */ = {
 			isa = PBXGroup;
 			children = (
+				D73B1FAB308E53CC008C3A39 /* Widget */,
+				D73B1FA8308E50EB008C3A39 /* Share */,
+				D73B1FA3308E4D05008C3A39 /* MLModels */,
 				D76B6525308DE3C900FECADB /* Services */,
 				D76B6522308DE39200FECADB /* Models */,
 				D76B651A308DE18F00FECADB /* Views */,
@@ -229,6 +266,8 @@
 				D76B6527308DE3F100FECADB /* AppState.swift */,
 				D76B6529308DE42800FECADB /* MockData.swift */,
 				D76B652B308DE6D200FECADB /* MaintenancePredictor.swift */,
+				D73B1FA4308E5067008C3A39 /* MLService.swift */,
+				D73B1FA6308E5084008C3A39 /* LocationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -363,8 +402,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D73B1FAF308E542F008C3A39 /* GarageWidgetBundle.swift in Sources */,
 				D76B653C308DE8B500FECADB /* VehicleDetailView.swift in Sources */,
+				D73B1FAD308E5407008C3A39 /* GarageStatusWidgetView.swift in Sources */,
 				D73B1F92308E37C3008C3A39 /* GarageTabView.swift in Sources */,
+				D73B1FA7308E5084008C3A39 /* LocationManager.swift in Sources */,
 				D76B6524308DE3B100FECADB /* UserRole.swift in Sources */,
 				D73B1F98308E4270008C3A39 /*  DriverActiveJobView.swift in Sources */,
 				D73B1F86308DE905008C3A39 /* VehicleListView.swift in Sources */,
@@ -378,6 +420,8 @@
 				D76B652C308DE6D200FECADB /* MaintenancePredictor.swift in Sources */,
 				D73B1F96308E3811008C3A39 /* InventoryView.swift in Sources */,
 				D76B6538308DE86D00FECADB /* ScheduleServiceView.swift in Sources */,
+				D73B1FA5308E5067008C3A39 /* MLService.swift in Sources */,
+				D73B1FAA308E50FB008C3A39 /* WidgetSnapshot.swift in Sources */,
 				D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */,
 				D76B652A308DE42800FECADB /* MockData.swift in Sources */,
 				D73B1F9C308E42BC008C3A39 /*  DriverTabView.swift in Sources */,

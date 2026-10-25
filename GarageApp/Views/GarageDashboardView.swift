@@ -26,6 +26,8 @@ struct GarageDashboardView: View {
                         }
                         .frame(height: 200)
                         .accessibilityLabel("Monthly revenue with forecast for the next two months")
+                        Text(MLService.shared.revenueLoaded ? "Forecast by on-device Core ML" : "Forecast: simple trend (model not bundled)")
+                            .font(.caption2).foregroundStyle(.secondary)
                         HStack(spacing: 16) {
                             Label("Actual", systemImage: "square.fill").foregroundStyle(.blue)
                             Label("Forecast", systemImage: "square.fill").foregroundStyle(.orange)

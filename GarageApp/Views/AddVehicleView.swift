@@ -33,6 +33,7 @@ struct AddVehicleView: View {
                     Button("Save") {
                         app.vehicles.append(Vehicle(registration: registration, make: make, model: model,
                                                     year: year, mileage: Int(mileage) ?? 0))
+                        app.publishWidgetSnapshot()
                         dismiss()
                     }
                     .disabled(!isValid)

@@ -18,8 +18,7 @@ enum MockData {
 
     static let appointments: [Appointment] = [
         Appointment(customerName: "Nimal Perera", vehicleTitle: "2016 Toyota Axio", service: .oilChange, date: days(1), status: .pending, noShowRisk: 0.12),
-        Appointment(customerName: "Kasun Silva", vehicleTitle: "2019 Honda Vezel", service: .brakeService, date: days(1), status: .accepted, assignedStaff: "Ruwan", noShowRisk: 0.46),
-        Appointment(customerName: "Dilani Fernando", vehicleTitle: "2014 Nissan Leaf", service: .batteryCheck, date: days(2), status: .pending, noShowRisk: 0.71),
+        Appointment(customerName: "Dilani Fernando", vehicleTitle: "2014 Nissan Leaf", service: .batteryCheck, date: days(2), status: .pending, noShowRisk: 0.71, bookedDaysAhead: 25, pastNoShows: 2, isFirstVisit: true),
         Appointment(customerName: "Sahan Jayasuriya", vehicleTitle: "2018 Suzuki Wagon R", service: .fullService, date: days(0), status: .inProgress, assignedStaff: "Chamara", noShowRisk: 0.05),
         Appointment(customerName: "Amali Weerasinghe", vehicleTitle: "2020 Kia Picanto", service: .acService, date: days(-1), status: .completed, assignedStaff: "Ruwan", noShowRisk: 0.08)
     ]
@@ -55,9 +54,13 @@ enum MockData {
     static let revenue: [RevenuePoint] = [
         RevenuePoint(month: "May", amount: 410_000), RevenuePoint(month: "Jun", amount: 455_000),
         RevenuePoint(month: "Jul", amount: 430_000), RevenuePoint(month: "Aug", amount: 498_000),
-        RevenuePoint(month: "Sep", amount: 520_000), RevenuePoint(month: "Oct", amount: 540_000),
-        RevenuePoint(month: "Nov", amount: 565_000, isForecast: true),
-        RevenuePoint(month: "Dec", amount: 610_000, isForecast: true)
+        RevenuePoint(month: "Sep", amount: 520_000), RevenuePoint(month: "Oct", amount: 540_000)
+    ]
+
+    static let garages: [GarageInfo] = [
+        GarageInfo(name: "AutoCare Garage", latitude: 7.2100, longitude: 79.8420),
+        GarageInfo(name: "Power Motors", latitude: 7.1900, longitude: 79.8600),
+        GarageInfo(name: "Negombo Auto Works", latitude: 7.2300, longitude: 79.8300)
     ]
 
     static let notifications: [AppNotification] = [

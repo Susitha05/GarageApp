@@ -2,20 +2,31 @@ import SwiftUI
 
 struct ScheduleServiceView: View {
     @Environment(AppState.self) private var app
+    @State private var location = LocationManager()
 
     @State private var vehicleID: UUID?
     @State private var service: ServiceKind = .oilChange
-    @State private var garage = "AutoCare Garage"
+    @State private var garage = MockData.garages[0].name
     @State private var date = Calendar.current.date(byAdding: .day, value: 1, to: .now) ?? .now
     @State private var slot = "10:00 AM"
     @State private var confirmed = false
 
-    private let garages = ["AutoCare Garage", "Power Motors", "Negombo Auto Works"]
     private let slots = ["09:00 AM", "10:00 AM", "11:30 AM", "01:00 PM", "03:00 PM", "04:30 PM"]
+
+    private func distanceText(_ g: GarageInfo) -> String {
+        guard let km = location.distanceKm(to: g.coordinate) else { return "" }
+        return String(format: " • %.1f km", km)
+    }
 
     var body: some View {
         NavigationStack {
             Form {
+                if let arrived = location.arrivedRegionID {
+                    Section {
+                        Label("You've arrived at \(arrived)", systemImage: "checkmark.seal.fill")
+                            .foregroundStyle(.green)
+                    }
+                }
                 Section("1. Vehicle") {
                     Picker("Vehicle", selection: $vehicleID) {
                         ForEach(app.vehicles) { Text($0.title).tag(Optional($0.id)) }
@@ -26,10 +37,16 @@ struct ScheduleServiceView: View {
                         ForEach(ServiceKind.allCases) { Label($0.rawValue, systemImage: $0.icon).tag($0) }
                     }
                 }
-                Section("3. Garage") {
+                Section {
                     Picker("Garage", selection: $garage) {
-                        ForEach(garages, id: \.self) { Text($0) }
+                        ForEach(MockData.garages) { g in
+                            Text(g.name + distanceText(g)).tag(g.name)
+                        }
                     }
+                } header: {
+                    Text("3. Garage")
+                } footer: {
+                    Text(location.isLive ? "Distances from your current location." : "Enable location to see distances.")
                 }
                 Section("4. Date & time") {
                     DatePicker("Date", selection: $date, in: Date.now..., displayedComponents: .date)
@@ -40,7 +57,7 @@ struct ScheduleServiceView: View {
                 Section {
                     Button("Confirm booking") { book() }
                         .frame(maxWidth: .infinity)
-                        .disabled(vehicleID == nil && app.vehicles.isEmpty)
+                        .disabled(app.vehicles.isEmpty)
                 }
 
                 let mine = app.appointments.filter { $0.customerName == app.userName }
@@ -61,21 +78,29 @@ struct ScheduleServiceView: View {
                 }
             }
             .navigationTitle("Book a Service")
+            .task { location.start() }
             .onAppear { if vehicleID == nil { vehicleID = app.vehicles.first?.id } }
             .alert("Booking requested", isPresented: $confirmed) {
                 Button("OK", role: .cancel) {}
             } message: {
-                Text("\(service.rawValue) at \(garage), \(slot). You'll be notified once the garage confirms.")
+                Text("\(service.rawValue) at \(garage), \(slot). We'll let you know when you arrive.")
             }
         }
     }
 
     private func book() {
         let vehicle = app.vehicles.first { $0.id == vehicleID } ?? app.vehicles.first
+        let lead = max(0, Calendar.current.dateComponents([.day], from: .now, to: date).day ?? 0)
         app.appointments.append(Appointment(customerName: app.userName,
                                             vehicleTitle: vehicle?.title ?? "Vehicle",
                                             service: service, garage: garage,
-                                            date: date, status: .pending))
+                                            date: date, status: .pending,
+                                            bookedDaysAhead: lead, isFirstVisit: false))
+        app.refreshNoShowRisk()
+        app.publishWidgetSnapshot()
+        if let g = MockData.garages.first(where: { $0.name == garage }) {
+            location.startGeofence(id: g.name, center: g.coordinate)   // arrival detection
+        }
         confirmed = true
     }
 }

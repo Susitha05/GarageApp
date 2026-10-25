@@ -22,7 +22,10 @@ struct VehicleDetailView: View {
                     Label("\(vehicle.mileage.formatted()) km", systemImage: "speedometer")
                 }
 
-                SectionTitle("Predicted (on-device AI)")
+                SectionTitle("Predicted maintenance")
+                Label(MLService.shared.maintenanceLoaded ? "On-device Core ML model" : "Rule-based fallback (model not bundled)",
+                      systemImage: MLService.shared.maintenanceLoaded ? "cpu" : "exclamationmark.triangle")
+                    .font(.caption).foregroundStyle(.secondary)
                 ForEach(predictions) { p in
                     HStack {
                         Circle().fill(p.risk.color).frame(width: 12, height: 12)

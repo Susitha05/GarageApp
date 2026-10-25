@@ -51,6 +51,7 @@ struct CustomerHomeView: View {
                 .padding()
             }
             .navigationTitle("Home")
+            .onAppear { app.publishWidgetSnapshot() }
         }
     }
 
