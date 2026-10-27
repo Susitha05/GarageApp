@@ -31,9 +31,9 @@ struct SettingsView: View {
                     NavigationLink("Notification history", destination: NotificationsView())
                 }
                 Section {
-                    Button("Switch role / sign out", role: .destructive) { app.signOut() }
+                    Button("Sign out", role: .destructive) { app.signOut() }
                 } footer: {
-                    Text("Preview build – Firebase and authentication are not connected.")
+                    Text("Signed in as \(app.email)")
                 }
             }
             .navigationTitle("Settings")

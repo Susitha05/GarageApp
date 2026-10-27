@@ -19,6 +19,9 @@ final class AppState {
     var anomalies = MockData.anomalies
     var activeJobID: UUID?
 
+    /// Set by RootView so Settings can trigger a real sign-out.
+    @ObservationIgnored var signOutHandler: (() -> Void)?
+
     init(role: UserRole? = nil) {
         self.role = role
         revenue = MLService.shared.extendRevenue(MockData.revenue)   // Core ML forecast
@@ -74,5 +77,8 @@ final class AppState {
         if next == .completed { activeJobID = nil }
     }
 
-    func signOut() { role = nil }
+    func signOut() {
+        role = nil
+        signOutHandler?()
+    }
 }
