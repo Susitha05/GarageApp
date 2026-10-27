@@ -1,20 +1,56 @@
 import SwiftUI
 
-/// Digital vehicle health timeline: past services + predicted maintenance.
+/// Digital vehicle health timeline: past services + predicted maintenance. Edit / delete from the ••• menu.
 struct VehicleDetailView: View {
     @Environment(AppState.self) private var app
-    let vehicle: Vehicle
+    @Environment(\.dismiss) private var dismiss
+    let vehicleID: UUID
+    @State private var showEdit = false
+    @State private var confirmDelete = false
     private let predictor = MaintenancePredictor()
 
-    private var history: [ServiceRecord] {
-        app.records.filter { $0.vehicleID == vehicle.id }.sorted { $0.date > $1.date }
-    }
-    private var predictions: [PredictedMaintenance] {
-        predictor.predict(for: vehicle, records: app.records)
-    }
+    private var vehicle: Vehicle? { app.vehicles.first { $0.id == vehicleID } }
 
     var body: some View {
-        ScrollView {
+        Group {
+            if let vehicle {
+                content(vehicle)
+            } else {
+                ContentUnavailableView("Vehicle removed", systemImage: "car")
+            }
+        }
+        .navigationTitle("Vehicle Health")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if let vehicle {
+                Menu {
+                    Button { showEdit = true } label: { Label("Edit vehicle", systemImage: "pencil") }
+                    Button(role: .destructive) { confirmDelete = true } label: { Label("Delete vehicle", systemImage: "trash") }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
+                .accessibilityLabel("Vehicle options for \(vehicle.title)")
+            }
+        }
+        .sheet(isPresented: $showEdit) {
+            if let vehicle { AddVehicleView(editing: vehicle) }
+        }
+        .confirmationDialog("Delete this vehicle?", isPresented: $confirmDelete, titleVisibility: .visible) {
+            Button("Delete", role: .destructive) {
+                app.removeVehicle(vehicleID)
+                dismiss()
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Its service history will be removed too.")
+        }
+    }
+
+    private func content(_ vehicle: Vehicle) -> some View {
+        let history = app.records.filter { $0.vehicleID == vehicle.id }.sorted { $0.date > $1.date }
+        let predictions = predictor.predict(for: vehicle, records: app.records)
+
+        return ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 Card {
                     Text(vehicle.title).font(.title3.bold())
@@ -41,9 +77,7 @@ struct VehicleDetailView: View {
                 }
 
                 SectionTitle("Service history")
-                if history.isEmpty {
-                    Text("No records yet.").foregroundStyle(.secondary)
-                }
+                if history.isEmpty { Text("No records yet.").foregroundStyle(.secondary) }
                 ForEach(history) { r in
                     HStack(alignment: .top, spacing: 12) {
                         Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
@@ -59,14 +93,10 @@ struct VehicleDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Vehicle Health")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    NavigationStack {
-        VehicleDetailView(vehicle: MockData.vehicles[0])
-    }
-    .environment(AppState(role: .customer))
+    NavigationStack { VehicleDetailView(vehicleID: MockData.vehicles[0].id) }
+        .environment(AppState(role: .customer))
 }

@@ -2,27 +2,36 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(AppState.self) private var app
-    @State private var faceID = true
+    private let lock = AppLock.shared
     @State private var pushEnabled = true
     @State private var maintenanceAlerts = true
     @State private var towUpdates = true
+
+    private var lockBinding: Binding<Bool> {
+        Binding(get: { lock.isEnabled }, set: { value in Task { await lock.setEnabled(value) } })
+    }
 
     var body: some View {
         NavigationStack {
             Form {
                 Section {
-                    HStack(spacing: 14) {
-                        Image(systemName: "person.crop.circle.fill").font(.system(size: 44)).foregroundStyle(.blue)
-                        VStack(alignment: .leading) {
-                            Text(app.userName).font(.headline)
-                            Text(app.email).font(.caption).foregroundStyle(.secondary)
-                            Text(app.role?.rawValue ?? "").font(.caption).foregroundStyle(.blue)
+                    NavigationLink(destination: ProfileView()) {
+                        HStack(spacing: 14) {
+                            AvatarView(data: app.profileImageData, size: 52)
+                            VStack(alignment: .leading) {
+                                Text(app.userName).font(.headline)
+                                Text(app.email).font(.caption).foregroundStyle(.secondary)
+                                Text(app.role?.rawValue ?? "").font(.caption).foregroundStyle(.blue)
+                            }
                         }
                     }
-                    NavigationLink("Edit profile", destination: ProfileView())
                 }
-                Section("Security") {
-                    Toggle("Unlock with Face ID", isOn: $faceID)
+                Section {
+                    Toggle("Unlock with \(lock.biometryName)", isOn: lockBinding)
+                } header: {
+                    Text("Security")
+                } footer: {
+                    Text("Locks the app when you leave it and asks for \(lock.biometryName) or your device passcode when you return.")
                 }
                 Section("Notifications") {
                     Toggle("Push notifications", isOn: $pushEnabled)
@@ -37,6 +46,12 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+            .alert("Security", isPresented: Binding(get: { lock.errorMessage != nil },
+                                                    set: { if !$0 { lock.errorMessage = nil } })) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(lock.errorMessage ?? "")
+            }
         }
     }
 }

@@ -22,10 +22,12 @@ struct GarageApp: App {
     }
 }
 
-/// Routes by auth state: login/sign-up → role selection (new Google users) → role-specific tabs.
+/// Routes by auth state, and covers the app with the Face ID lock when enabled.
 struct RootView: View {
     @Environment(AppState.self) private var app
     @Environment(AuthService.self) private var auth
+    @Environment(\.scenePhase) private var scenePhase
+    private let lock = AppLock.shared
 
     var body: some View {
         Group {
@@ -45,15 +47,35 @@ struct RootView: View {
             }
         }
         .animation(.easeInOut, value: auth.phase)
+        .overlay {
+            if lock.isLocked && auth.user != nil { LockView() }
+        }
         .task {
             app.signOutHandler = { auth.signOut() }
             auth.start()
         }
+        .task(id: auth.user?.uid) { startTowListeners() }
         .onChange(of: auth.user) { _, user in
             guard let user else { return }
             app.role = user.role
             app.userName = user.name
             app.email = user.email
+            app.profileImageData = user.photoData
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .background { lock.lockIfNeeded() }
+        }
+    }
+}
+
+extension RootView {
+    /// Tow listeners follow the login state, so they restart after every sign-in and stop on sign-out.
+    private func startTowListeners() {
+        guard let user = auth.user else { TowService.shared.stop(); return }
+        switch user.role {
+        case .customer: TowService.shared.listenAsCustomer(uid: user.uid)
+        case .towDriver: TowService.shared.listenAsDriver(uid: user.uid)
+        case .garageOwner: break
         }
     }
 }

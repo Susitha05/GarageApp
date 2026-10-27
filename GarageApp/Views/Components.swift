@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct Card<Content: View>: View {
     @ViewBuilder var content: Content
@@ -52,4 +53,22 @@ struct SectionTitle: View {
         Card { SectionTitle("Card title"); Text("Body") }
     }
     .padding()
+}
+
+struct AvatarView: View {
+    var data: Data?
+    var size: CGFloat = 56
+
+    var body: some View {
+        Group {
+            if let data, let image = UIImage(data: data) {
+                Image(uiImage: image).resizable().scaledToFill()
+            } else {
+                Image(systemName: "person.crop.circle.fill").resizable().foregroundStyle(.blue)
+            }
+        }
+        .frame(width: size, height: size)
+        .clipShape(Circle())
+        .accessibilityLabel("Profile picture")
+    }
 }

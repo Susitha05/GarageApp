@@ -12,6 +12,7 @@ struct AppUser: Equatable {
     var name: String
     var email: String
     var role: UserRole
+    var photoData: Data? = nil
 }
 
 /// Signed in with Firebase but no Firestore profile yet (e.g. first Google sign-in).
@@ -109,6 +110,7 @@ final class AuthService {
         guard usesFirebase else { return }
         isBusy = true; defer { isBusy = false }
         do {
+            AppLock.shared.markUnlocked()
             _ = try await Auth.auth().signIn(withEmail: email.trimmingCharacters(in: .whitespaces), password: password)
         } catch {
             showError(message(for: error))
@@ -120,6 +122,7 @@ final class AuthService {
         guard usesFirebase else { return }
         isBusy = true
         suppressListener = true
+        AppLock.shared.markUnlocked()
         defer { isBusy = false; suppressListener = false }
 
         let cleanEmail = email.trimmingCharacters(in: .whitespaces)
@@ -175,6 +178,7 @@ final class AuthService {
             }
             let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                            accessToken: result.user.accessToken.tokenString)
+            AppLock.shared.markUnlocked()
             _ = try await Auth.auth().signIn(with: credential)
         } catch {
             let ns = error as NSError
@@ -198,7 +202,39 @@ final class AuthService {
         }
     }
 
+    /// Updates the display name and/or profile picture (small JPEG stored in the Firestore user document).
+    @MainActor
+    func updateProfile(name: String? = nil, photo: Data? = nil) async {
+        guard var current = user else { return }
+        let cleanName = name?.trimmingCharacters(in: .whitespaces)
+        if let cleanName, !cleanName.isEmpty { current.name = cleanName }
+        if let photo { current.photoData = photo.isEmpty ? nil : photo }
+
+        if usesFirebase, current.uid != "dev" {
+            var fields: [String: Any] = [:]
+            if let cleanName, !cleanName.isEmpty { fields["name"] = cleanName }
+            if let photo { fields["photo"] = photo }
+            do {
+                if !fields.isEmpty {
+                    try await Firestore.firestore().collection("users").document(current.uid).updateData(fields)
+                }
+                if let cleanName, !cleanName.isEmpty, let fb = Auth.auth().currentUser {
+                    let change = fb.createProfileChangeRequest()
+                    change.displayName = cleanName
+                    try? await change.commitChanges()
+                }
+            } catch {
+                showError(message(for: error))
+                return
+            }
+        }
+        phase = .signedIn(current)
+    }
+
     func signOut() {
+        TowService.shared.stop()
+        LocationManager.shared.stop()
+        AppLock.shared.reset()
         if usesFirebase {
             try? Auth.auth().signOut()
             GIDSignIn.sharedInstance.signOut()
@@ -223,7 +259,8 @@ final class AuthService {
         return AppUser(uid: uid,
                        name: data["name"] as? String ?? "",
                        email: data["email"] as? String ?? "",
-                       role: role)
+                       role: role,
+                       photoData: (data["photo"] as? Data).flatMap { $0.isEmpty ? nil : $0 })
     }
 
     private func saveProfile(uid: String, name: String, email: String, role: UserRole) async throws {

@@ -144,32 +144,67 @@ struct StaffMember: Identifiable {
 
 enum TowStatus: String, CaseIterable {
     case requested = "Requested", accepted = "Accepted", enRoute = "En Route"
-    case arrived = "Arrived", towing = "Towing", completed = "Completed"
+    case arrived = "Arrived", towing = "Towing", completed = "Completed", cancelled = "Cancelled"
+
+    /// Value stored in Firestore.
+    var code: String {
+        switch self {
+        case .requested: "requested"
+        case .accepted: "accepted"
+        case .enRoute: "enRoute"
+        case .arrived: "arrived"
+        case .towing: "towing"
+        case .completed: "completed"
+        case .cancelled: "cancelled"
+        }
+    }
+    init?(code: String) {
+        guard let s = Self.allCases.first(where: { $0.code == code }) else { return nil }
+        self = s
+    }
 
     var next: TowStatus? {
-        guard let i = Self.allCases.firstIndex(of: self), i + 1 < Self.allCases.count else { return nil }
-        return Self.allCases[i + 1]
+        switch self {
+        case .requested: .accepted
+        case .accepted: .enRoute
+        case .enRoute: .arrived
+        case .arrived: .towing
+        case .towing: .completed
+        case .completed, .cancelled: nil
+        }
     }
+    var isActive: Bool { self != .completed && self != .cancelled }
     var color: Color {
         switch self {
         case .requested: .orange
         case .accepted, .enRoute: .blue
         case .arrived, .towing: .purple
         case .completed: .green
+        case .cancelled: .gray
         }
     }
 }
 
-struct TowRequest: Identifiable {
-    var id = UUID()
+struct TowRequest: Identifiable, Equatable {
+    var id: String = UUID().uuidString
+    var customerUid: String = ""
     var customerName: String
     var vehicleTitle: String
     var address: String
     var latitude: Double
     var longitude: Double
-    var distanceKm: Double
     var status: TowStatus
+    var driverUid: String? = nil
+    var driverName: String? = nil
+    var driverLatitude: Double? = nil
+    var driverLongitude: Double? = nil
+    var createdAt: Date = .now
+
     var coordinate: CLLocationCoordinate2D { .init(latitude: latitude, longitude: longitude) }
+    var driverCoordinate: CLLocationCoordinate2D? {
+        guard let lat = driverLatitude, let lon = driverLongitude else { return nil }
+        return .init(latitude: lat, longitude: lon)
+    }
 }
 
 struct ExpenseEntry: Identifiable {

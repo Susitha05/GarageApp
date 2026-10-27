@@ -12,4 +12,8 @@ struct GarageTabView: View {
     }
 }
 
-#Preview { GarageTabView().environment(AppState(role: .garageOwner)) }
+#Preview {
+    GarageTabView()
+        .environment(AppState(role: .garageOwner))
+        .environment(AuthService.preview(user: AppUser(uid: "g1", name: "Sasanka", email: "s@example.com", role: .garageOwner)))
+}

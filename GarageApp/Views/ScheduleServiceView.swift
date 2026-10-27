@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ScheduleServiceView: View {
     @Environment(AppState.self) private var app
-    @State private var location = LocationManager()
+    private let location = LocationManager.shared
 
     @State private var vehicleID: UUID?
     @State private var service: ServiceKind = .oilChange

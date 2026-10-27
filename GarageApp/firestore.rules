@@ -1,12 +1,50 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function roleOf(uid) {
+      return get(/databases/$(database)/documents/users/$(uid)).data.role;
+    }
+    function isDriver() { return signedIn() && roleOf(request.auth.uid) == 'towDriver'; }
+
+    // User profiles (name, email, role, small profile photo)
     match /users/{uid} {
-      allow read: if request.auth != null && request.auth.uid == uid;
-      allow create: if request.auth != null && request.auth.uid == uid
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow create: if signedIn() && request.auth.uid == uid
                     && request.resource.data.role in ['customer', 'garageOwner', 'towDriver'];
-      allow update: if request.auth != null && request.auth.uid == uid
+      allow update: if signedIn() && request.auth.uid == uid
                     && request.resource.data.role == resource.data.role;
+      allow delete: if false;
+    }
+
+    // Tow requests shared between customers and drivers
+    match /towRequests/{id} {
+      allow read: if signedIn() && (
+        resource.data.customerUid == request.auth.uid ||
+        resource.data.driverUid == request.auth.uid ||
+        (resource.data.status == 'requested' && isDriver())
+      );
+
+      allow create: if signedIn()
+                    && request.resource.data.customerUid == request.auth.uid
+                    && request.resource.data.status == 'requested';
+
+      allow update: if signedIn() && (
+        // customer: cancel or stream their location
+        (resource.data.customerUid == request.auth.uid
+          && request.resource.data.customerUid == resource.data.customerUid
+          && request.resource.data.get('driverUid', null) == resource.data.get('driverUid', null)
+          && (request.resource.data.status == resource.data.status
+              || request.resource.data.status == 'cancelled'))
+        // driver: take an open job (server checks it is still 'requested')
+        || (isDriver() && resource.data.status == 'requested'
+            && request.resource.data.driverUid == request.auth.uid)
+        // driver: update their own job
+        || (isDriver() && resource.data.driverUid == request.auth.uid
+            && request.resource.data.driverUid == request.auth.uid)
+      );
+
       allow delete: if false;
     }
   }

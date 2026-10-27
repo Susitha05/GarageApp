@@ -1,14 +1,25 @@
 import SwiftUI
 
+/// Add a vehicle, or edit an existing one when `editing` is passed.
 struct AddVehicleView: View {
     @Environment(AppState.self) private var app
     @Environment(\.dismiss) private var dismiss
 
-    @State private var registration = ""
-    @State private var make = ""
-    @State private var model = ""
-    @State private var year = 2020
-    @State private var mileage = ""
+    private let editing: Vehicle?
+    @State private var registration: String
+    @State private var make: String
+    @State private var model: String
+    @State private var year: Int
+    @State private var mileage: String
+
+    init(editing: Vehicle? = nil) {
+        self.editing = editing
+        _registration = State(initialValue: editing?.registration ?? "")
+        _make = State(initialValue: editing?.make ?? "")
+        _model = State(initialValue: editing?.model ?? "")
+        _year = State(initialValue: editing?.year ?? 2020)
+        _mileage = State(initialValue: editing.map { String($0.mileage) } ?? "")
+    }
 
     private var isValid: Bool { !registration.isEmpty && !make.isEmpty && !model.isEmpty && Int(mileage) != nil }
 
@@ -25,22 +36,33 @@ struct AddVehicleView: View {
                     TextField("Mileage (km)", text: $mileage).keyboardType(.numberPad)
                 }
             }
-            .navigationTitle("Add Vehicle")
+            .navigationTitle(editing == nil ? "Add Vehicle" : "Edit Vehicle")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        app.vehicles.append(Vehicle(registration: registration, make: make, model: model,
-                                                    year: year, mileage: Int(mileage) ?? 0))
-                        app.publishWidgetSnapshot()
-                        dismiss()
-                    }
-                    .disabled(!isValid)
+                    Button("Save") { save() }.disabled(!isValid)
                 }
             }
         }
     }
+
+    private func save() {
+        if var vehicle = editing {
+            vehicle.registration = registration
+            vehicle.make = make
+            vehicle.model = model
+            vehicle.year = year
+            vehicle.mileage = Int(mileage) ?? vehicle.mileage
+            app.updateVehicle(vehicle)
+        } else {
+            app.vehicles.append(Vehicle(registration: registration, make: make, model: model,
+                                        year: year, mileage: Int(mileage) ?? 0))
+            app.publishWidgetSnapshot()
+        }
+        dismiss()
+    }
 }
 
-#Preview { AddVehicleView().environment(AppState(role: .customer)) }
+#Preview("Add") { AddVehicleView().environment(AppState(role: .customer)) }
+#Preview("Edit") { AddVehicleView(editing: MockData.vehicles[0]).environment(AppState(role: .customer)) }

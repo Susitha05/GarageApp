@@ -2,15 +2,18 @@ import Foundation
 import CoreLocation
 import MapKit
 
-/// Wraps CLLocationManager: permission, live updates, reverse geocoding and a simple geofence.
+/// One shared instance for the whole app: permission, live updates, reverse geocoding and a simple geofence.
 @Observable
 final class LocationManager: NSObject, CLLocationManagerDelegate {
+    static let shared = LocationManager()
     static let fallback = CLLocationCoordinate2D(latitude: 7.2085, longitude: 79.8358) // Negombo
 
     var location: CLLocation?
     var authorization: CLAuthorizationStatus
     var address: String?
     var arrivedRegionID: String?
+    var isSampleLocation = false
+    var failure: String?
 
     @ObservationIgnored private let manager = CLLocationManager()
     @ObservationIgnored private let geocoder = CLGeocoder()
@@ -28,11 +31,14 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     var coordinate: CLLocationCoordinate2D { location?.coordinate ?? Self.fallback }
     var isLive: Bool { location != nil }
     var isDenied: Bool { authorization == .denied || authorization == .restricted }
+    var isAuthorized: Bool { authorization == .authorizedWhenInUse || authorization == .authorizedAlways }
 
     var statusText: String {
         if isDenied { return "Location access denied – enable it in Settings" }
-        if isLive { return address ?? "Live location" }
-        return "Using sample location"
+        if isSampleLocation { return "Sample location (testing)" }
+        if location != nil { return address ?? "Live location" }
+        if authorization == .notDetermined { return "Allow location access to continue" }
+        return failure ?? "Finding your location…"
     }
 
     func start() {
@@ -43,7 +49,19 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
 
-    func stop() { manager.stopUpdatingLocation() }
+    func stop() {
+        manager.stopUpdatingLocation()
+        location = nil
+        address = nil
+        isSampleLocation = false
+    }
+
+    /// For simulators / testing when no GPS fix is available.
+    func useSampleLocation() {
+        isSampleLocation = true
+        location = CLLocation(latitude: Self.fallback.latitude, longitude: Self.fallback.longitude)
+        address = "Colombo Rd, Negombo"
+    }
 
     func distanceKm(to coordinate: CLLocationCoordinate2D) -> Double? {
         guard let location else { return nil }
@@ -66,22 +84,20 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: CLLocationManagerDelegate
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         authorization = manager.authorizationStatus
-        if authorization == .authorizedWhenInUse || authorization == .authorizedAlways {
-            manager.startUpdatingLocation()
-        }
+        if isAuthorized { manager.startUpdatingLocation() }
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let latest = locations.last else { return }
+        isSampleLocation = false
+        failure = nil
         location = latest
 
-        // Foreground geofence check (works with "When In Use" permission).
         if let g = geofence,
            latest.distance(from: CLLocation(latitude: g.center.latitude, longitude: g.center.longitude)) <= g.radius {
             arrivedRegionID = g.id
         }
 
-        // Reverse-geocode at most every 30 s.
         if Date().timeIntervalSince(lastGeocode) > 30, !geocoder.isGeocoding {
             lastGeocode = Date()
             geocoder.reverseGeocodeLocation(latest) { [weak self] marks, _ in
@@ -95,7 +111,12 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         arrivedRegionID = region.identifier
     }
 
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        let ns = error as NSError
+        failure = ns.code == CLError.locationUnknown.rawValue
+            ? "Waiting for GPS… (Simulator: Features ▸ Location)"
+            : error.localizedDescription
+    }
 }
 
 /// Driving route + ETA via MapKit.

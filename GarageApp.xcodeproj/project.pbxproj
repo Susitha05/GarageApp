@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D710E1DD3090A9FD00C53492 /* Applock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D710E1DC3090A9FD00C53492 /* Applock.swift */; };
+		D710E1DF3090AAE700C53492 /* TowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D710E1DE3090AAE600C53492 /* TowService.swift */; };
+		D710E1E13090ADEB00C53492 /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D710E1E03090ADEB00C53492 /* LockView.swift */; };
 		D73B1F86308DE905008C3A39 /* VehicleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F85308DE905008C3A39 /* VehicleListView.swift */; };
 		D73B1F88308DE974008C3A39 /*  NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F87308DE974008C3A39 /*  NotificationsView.swift */; };
 		D73B1F8A308DE992008C3A39 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1F89308DE992008C3A39 /* ProfileView.swift */; };
@@ -76,6 +79,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D710E1DC3090A9FD00C53492 /* Applock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Applock.swift; sourceTree = "<group>"; };
+		D710E1DE3090AAE600C53492 /* TowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowService.swift; sourceTree = "<group>"; };
+		D710E1E03090ADEB00C53492 /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
 		D73B1F85308DE905008C3A39 /* VehicleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListView.swift; sourceTree = "<group>"; };
 		D73B1F87308DE974008C3A39 /*  NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " NotificationsView.swift"; sourceTree = "<group>"; };
 		D73B1F89308DE992008C3A39 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -278,6 +284,7 @@
 				D7BF86993090513900511291 /* ChooseRoleView.swift */,
 				D7BF869B3090516A00511291 /* LoginView.swift */,
 				D7BF869D309051A000511291 /* SignUpView.swift */,
+				D710E1E03090ADEB00C53492 /* LockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,6 +306,8 @@
 				D73B1FA4308E5067008C3A39 /* MLService.swift */,
 				D73B1FA6308E5084008C3A39 /* LocationManager.swift */,
 				D7BF869F309051D900511291 /* AuthService.swift */,
+				D710E1DC3090A9FD00C53492 /* Applock.swift */,
+				D710E1DE3090AAE600C53492 /* TowService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -453,6 +462,7 @@
 			files = (
 				D73B1FAF308E542F008C3A39 /* GarageWidgetBundle.swift in Sources */,
 				D76B653C308DE8B500FECADB /* VehicleDetailView.swift in Sources */,
+				D710E1DD3090A9FD00C53492 /* Applock.swift in Sources */,
 				D73B1FAD308E5407008C3A39 /* GarageStatusWidgetView.swift in Sources */,
 				D73B1F92308E37C3008C3A39 /* GarageTabView.swift in Sources */,
 				D73B1FA7308E5084008C3A39 /* LocationManager.swift in Sources */,
@@ -473,10 +483,12 @@
 				D7BF869A3090513900511291 /* ChooseRoleView.swift in Sources */,
 				D76B6538308DE86D00FECADB /* ScheduleServiceView.swift in Sources */,
 				D73B1FA5308E5067008C3A39 /* MLService.swift in Sources */,
+				D710E1E13090ADEB00C53492 /* LockView.swift in Sources */,
 				D73B1FAA308E50FB008C3A39 /* WidgetSnapshot.swift in Sources */,
 				D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */,
 				D76B652A308DE42800FECADB /* MockData.swift in Sources */,
 				D7BF869E309051A000511291 /* SignUpView.swift in Sources */,
+				D710E1DF3090AAE700C53492 /* TowService.swift in Sources */,
 				D73B1F9C308E42BC008C3A39 /*  DriverTabView.swift in Sources */,
 				D7BF8696309050D800511291 /* AuthComponents.swift in Sources */,
 				D76B653A308DE89300FECADB /* TowRequestView.swift in Sources */,
@@ -658,6 +670,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GarageApp/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock Smart Garage with Face ID.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to find garages and share your position with tow drivers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -689,6 +703,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GarageApp/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock Smart Garage with Face ID.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is used to find garages and share your position with tow drivers.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

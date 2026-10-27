@@ -1,14 +1,26 @@
 import SwiftUI
 
+private enum VehicleSheet: Identifiable {
+    case add
+    case edit(Vehicle)
+    var id: String {
+        switch self {
+        case .add: "add"
+        case .edit(let v): v.id.uuidString
+        }
+    }
+}
+
 struct VehicleListView: View {
     @Environment(AppState.self) private var app
-    @State private var showAdd = false
+    @State private var sheet: VehicleSheet?
+    @State private var pendingDelete: Vehicle?
 
     var body: some View {
         NavigationStack {
             List {
                 ForEach(app.vehicles) { vehicle in
-                    NavigationLink(destination: VehicleDetailView(vehicle: vehicle)) {
+                    NavigationLink(destination: VehicleDetailView(vehicleID: vehicle.id)) {
                         HStack(spacing: 14) {
                             Image(systemName: "car.fill").font(.title2)
                                 .frame(width: 44, height: 44)
@@ -20,15 +32,40 @@ struct VehicleListView: View {
                             }
                         }
                     }
+                    .swipeActions(edge: .trailing) {
+                        Button(role: .destructive) { pendingDelete = vehicle } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                        Button { sheet = .edit(vehicle) } label: {
+                            Label("Edit", systemImage: "pencil")
+                        }
+                        .tint(.blue)
+                    }
                 }
-                .onDelete { app.vehicles.remove(atOffsets: $0) }
             }
             .navigationTitle("My Vehicles")
             .toolbar {
-                Button { showAdd = true } label: { Image(systemName: "plus") }
+                Button { sheet = .add } label: { Image(systemName: "plus") }
                     .accessibilityLabel("Add vehicle")
             }
-            .sheet(isPresented: $showAdd) { AddVehicleView() }
+            .sheet(item: $sheet) { item in
+                switch item {
+                case .add: AddVehicleView()
+                case .edit(let vehicle): AddVehicleView(editing: vehicle)
+                }
+            }
+            .confirmationDialog("Delete this vehicle?",
+                                isPresented: Binding(get: { pendingDelete != nil },
+                                                     set: { if !$0 { pendingDelete = nil } }),
+                                titleVisibility: .visible) {
+                Button("Delete", role: .destructive) {
+                    if let v = pendingDelete { app.removeVehicle(v.id) }
+                    pendingDelete = nil
+                }
+                Button("Cancel", role: .cancel) { pendingDelete = nil }
+            } message: {
+                Text("Its service history will be removed too.")
+            }
             .overlay {
                 if app.vehicles.isEmpty {
                     ContentUnavailableView("No vehicles", systemImage: "car",

@@ -1,23 +1,22 @@
 import SwiftUI
 
-/// Central in-memory store. Replace the mock arrays with Firestore listeners later.
+/// In-memory store for demo data. Tow requests live in `TowService` (Firestore).
 @Observable
 final class AppState {
     var role: UserRole?
     var userName = "Sasanka Pasenadhi"
     var email = "sasanka@example.com"
+    var profileImageData: Data?
 
     var vehicles = MockData.vehicles
     var records = MockData.records
     var appointments = MockData.appointments
     var inventory = MockData.inventory
     var staff = MockData.staff
-    var towRequests = MockData.towRequests
     var expenses = MockData.expenses
     var revenue = MockData.revenue
     var notifications = MockData.notifications
     var anomalies = MockData.anomalies
-    var activeJobID: UUID?
 
     /// Set by RootView so Settings can trigger a real sign-out.
     @ObservationIgnored var signOutHandler: (() -> Void)?
@@ -51,11 +50,12 @@ final class AppState {
         let next = appointments
             .filter { $0.date >= startOfToday && ($0.status == .accepted || $0.status == .pending) }
             .min { $0.date < $1.date }
+        let tow = TowService.shared.customerRequest.flatMap { $0.status.isActive ? $0.status.rawValue : nil }
         WidgetSnapshotStore.save(WidgetSnapshot(
             vehicleName: v.title, topPart: top.part, dueInKm: top.dueInKm, risk: top.risk.rawValue,
             nextAppointmentTitle: next.map { "\($0.service.rawValue) • \($0.garage)" },
             nextAppointmentDate: next?.date,
-            towStatus: towRequests.first { $0.id == activeJobID }?.status.rawValue,
+            towStatus: tow,
             updated: .now))
     }
 
@@ -64,17 +64,17 @@ final class AppState {
         appointments[i].status = status
     }
 
-    func acceptJob(_ id: UUID) {
-        guard let i = towRequests.firstIndex(where: { $0.id == id }) else { return }
-        towRequests[i].status = .accepted
-        activeJobID = id
+    // MARK: Vehicles
+    func updateVehicle(_ vehicle: Vehicle) {
+        guard let i = vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
+        vehicles[i] = vehicle
+        publishWidgetSnapshot()
     }
 
-    func advanceActiveJob() {
-        guard let id = activeJobID, let i = towRequests.firstIndex(where: { $0.id == id }),
-              let next = towRequests[i].status.next else { return }
-        towRequests[i].status = next
-        if next == .completed { activeJobID = nil }
+    func removeVehicle(_ id: UUID) {
+        vehicles.removeAll { $0.id == id }
+        records.removeAll { $0.vehicleID == id }
+        publishWidgetSnapshot()
     }
 
     func signOut() {

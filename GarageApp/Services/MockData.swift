@@ -18,6 +18,7 @@ enum MockData {
 
     static let appointments: [Appointment] = [
         Appointment(customerName: "Nimal Perera", vehicleTitle: "2016 Toyota Axio", service: .oilChange, date: days(1), status: .pending, noShowRisk: 0.12),
+        Appointment(customerName: "Kasun Silva", vehicleTitle: "2019 Honda Vezel", service: .brakeService, date: days(1), status: .accepted, assignedStaff: "Ruwan", noShowRisk: 0.46, bookedDaysAhead: 14, pastNoShows: 1),
         Appointment(customerName: "Dilani Fernando", vehicleTitle: "2014 Nissan Leaf", service: .batteryCheck, date: days(2), status: .pending, noShowRisk: 0.71, bookedDaysAhead: 25, pastNoShows: 2, isFirstVisit: true),
         Appointment(customerName: "Sahan Jayasuriya", vehicleTitle: "2018 Suzuki Wagon R", service: .fullService, date: days(0), status: .inProgress, assignedStaff: "Chamara", noShowRisk: 0.05),
         Appointment(customerName: "Amali Weerasinghe", vehicleTitle: "2020 Kia Picanto", service: .acService, date: days(-1), status: .completed, assignedStaff: "Ruwan", noShowRisk: 0.08)
@@ -38,8 +39,8 @@ enum MockData {
     ]
 
     static let towRequests: [TowRequest] = [
-        TowRequest(customerName: "Nimal Perera", vehicleTitle: "2016 Toyota Axio", address: "Colombo Rd, Negombo", latitude: 7.2085, longitude: 79.8358, distanceKm: 3.2, status: .requested),
-        TowRequest(customerName: "Priya Nair", vehicleTitle: "2017 Honda Fit", address: "Airport Rd, Katunayake", latitude: 7.1750, longitude: 79.8860, distanceKm: 6.8, status: .requested)
+        TowRequest(customerName: "Nimal Perera", vehicleTitle: "2016 Toyota Axio", address: "Colombo Rd, Negombo", latitude: 7.2085, longitude: 79.8358, status: .requested),
+        TowRequest(customerName: "Priya Nair", vehicleTitle: "2017 Honda Fit", address: "Airport Rd, Katunayake", latitude: 7.1750, longitude: 79.8860, status: .requested)
     ]
 
     static let expenses: [ExpenseEntry] = [

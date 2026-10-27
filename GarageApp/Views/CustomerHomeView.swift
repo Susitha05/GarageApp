@@ -15,8 +15,11 @@ struct CustomerHomeView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Hello, \(app.userName.components(separatedBy: " ").first ?? "there") 👋")
-                        .font(.title2.bold())
+                    HStack(spacing: 12) {
+                        AvatarView(data: app.profileImageData, size: 44)
+                        Text("Hello, \(app.userName.components(separatedBy: " ").first ?? "there") 👋")
+                            .font(.title2.bold())
+                    }
 
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                         StatTile(title: "Vehicles", value: "\(app.vehicles.count)", icon: "car.fill")

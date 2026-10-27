@@ -12,4 +12,8 @@ struct CustomerTabView: View {
     }
 }
 
-#Preview { CustomerTabView().environment(AppState(role: .customer)) }
+#Preview {
+    CustomerTabView()
+        .environment(AppState(role: .customer))
+        .environment(AuthService.preview(user: AppUser(uid: "c1", name: "Sasanka", email: "s@example.com", role: .customer)))
+}
