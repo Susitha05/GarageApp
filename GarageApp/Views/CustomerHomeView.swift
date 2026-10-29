@@ -49,6 +49,9 @@ struct CustomerHomeView: View {
                         NavigationLink(destination: NotificationsView()) {
                             quickAction("Alerts", "bell.fill")
                         }
+                        NavigationLink(destination: CustomerReceiptsView()) {
+                            quickAction("Receipts", "doc.text.fill")
+                        }
                     }
                 }
                 .padding()

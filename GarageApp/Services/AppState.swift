@@ -1,18 +1,24 @@
 import SwiftUI
+import FirebaseCore
 
-/// In-memory store for demo data. Tow requests live in `TowService` (Firestore).
+/// App-wide state. Appointments, inventory and receipts are synced with Firestore by `CloudStore`
+/// (demo data is used in previews and in skip-login mode). Tow requests live in `TowService`.
 @Observable
 final class AppState {
     var role: UserRole?
     var userName = "Sasanka Pasenadhi"
     var email = "sasanka@example.com"
+    var userUid = ""
     var profileImageData: Data?
+    /// True while appointments / inventory / receipts are being synced from Firestore.
+    var isCloud = false
 
     var vehicles = MockData.vehicles
     var records = MockData.records
     var appointments = MockData.appointments
     var inventory = MockData.inventory
     var staff = MockData.staff
+    var receipts: [Receipt] = []
     var expenses = MockData.expenses
     var revenue = MockData.revenue
     var notifications = MockData.notifications
@@ -23,10 +29,41 @@ final class AppState {
 
     init(role: UserRole? = nil) {
         self.role = role
+        if FirebaseApp.app() != nil {          // real app: data arrives from Firestore
+            appointments = []
+            inventory = []
+        }
         revenue = MLService.shared.extendRevenue(MockData.revenue)   // Core ML forecast
         refreshNoShowRisk()                                           // Core ML classifier
+        refreshStaffLoad()
     }
 
+    // MARK: Cloud / demo data
+    func loadDemoData() {
+        isCloud = false
+        appointments = MockData.appointments
+        inventory = MockData.inventory
+        receipts = []
+        appointmentsDidSync()
+    }
+
+    func clearCloudData() {
+        guard FirebaseApp.app() != nil else { return }
+        isCloud = false
+        appointments = []
+        inventory = []
+        receipts = []
+        refreshStaffLoad()
+    }
+
+    /// Called after appointments arrive from Firestore.
+    func appointmentsDidSync() {
+        refreshNoShowRisk()
+        refreshStaffLoad()
+        publishWidgetSnapshot()
+    }
+
+    // MARK: Predictions & widget
     /// Runs the on-device no-show model for every appointment.
     func refreshNoShowRisk() {
         for i in appointments.indices {
@@ -59,12 +96,113 @@ final class AppState {
             updated: .now))
     }
 
-    func setStatus(_ id: UUID, _ status: AppointmentStatus) {
-        guard let i = appointments.firstIndex(where: { $0.id == id }) else { return }
-        appointments[i].status = status
+    // MARK: Appointments & mechanics
+    func addAppointment(_ appointment: Appointment) {
+        appointments.append(appointment)
+        refreshNoShowRisk()
+        CloudStore.shared.create(appointment)
     }
 
-    // MARK: Vehicles
+    func setStatus(_ id: UUID, _ status: AppointmentStatus) {
+        guard var a = appointments.first(where: { $0.id == id }) else { return }
+        a.status = status
+        updateAppointment(a)
+    }
+
+    func updateAppointment(_ updated: Appointment) {
+        guard let i = appointments.firstIndex(where: { $0.id == updated.id }) else { return }
+        let old = appointments[i]
+        appointments[i] = updated
+        if old.status != .completed, updated.status == .completed { creditCompletion(updated.assignedStaff) }
+        refreshStaffLoad()
+        refreshNoShowRisk()
+        CloudStore.shared.save(updated)
+    }
+
+    func assign(_ id: UUID, to mechanic: String?) {
+        guard let i = appointments.firstIndex(where: { $0.id == id }) else { return }
+        appointments[i].assignedStaff = mechanic
+        refreshStaffLoad()
+        CloudStore.shared.save(appointments[i])
+    }
+
+    /// Open jobs per mechanic, calculated from the appointments assigned to them.
+    func refreshStaffLoad() {
+        for i in staff.indices {
+            let name = staff[i].name
+            staff[i].assignedJobs = appointments.filter {
+                $0.assignedStaff == name &&
+                ($0.status == .pending || $0.status == .accepted || $0.status == .inProgress)
+            }.count
+        }
+    }
+
+    private func creditCompletion(_ name: String?) {
+        guard let name, let i = staff.firstIndex(where: { $0.name == name }) else { return }
+        staff[i].completedJobs += 1
+    }
+
+    // MARK: Inventory
+    func addInventoryItem(_ item: InventoryItem) {
+        inventory.append(item)
+        CloudStore.shared.save(item)
+    }
+
+    func updateInventoryItem(_ item: InventoryItem) {
+        guard let i = inventory.firstIndex(where: { $0.id == item.id }) else { return }
+        inventory[i] = item
+        CloudStore.shared.save(item)
+    }
+
+    func removeInventoryItem(_ id: UUID) {
+        inventory.removeAll { $0.id == id }
+        CloudStore.shared.deleteInventory(id)
+    }
+
+    func adjustStock(_ id: UUID, by delta: Int, countAsUsed: Bool = false) {
+        if let item = applyStock(id, by: delta, countAsUsed: countAsUsed) { CloudStore.shared.save(item) }
+    }
+
+    /// Changes the stock locally and returns the updated item (no network).
+    @discardableResult
+    private func applyStock(_ id: UUID, by delta: Int, countAsUsed: Bool) -> InventoryItem? {
+        guard let i = inventory.firstIndex(where: { $0.id == id }) else { return nil }
+        inventory[i].stock = max(0, inventory[i].stock + delta)
+        if countAsUsed, delta < 0 { inventory[i].usedThisMonth += -delta }
+        return inventory[i]
+    }
+
+    /// Adds a few example parts so a new (empty) inventory isn't blank.
+    func seedSampleInventory() {
+        for item in MockData.inventory {
+            addInventoryItem(InventoryItem(name: item.name, sku: item.sku, stock: item.stock,
+                                           minThreshold: item.minThreshold, usedThisMonth: item.usedThisMonth,
+                                           forecastNextMonth: item.forecastNextMonth, unitPrice: item.unitPrice))
+        }
+    }
+
+    // MARK: Receipts
+    func receipt(for appointmentID: UUID) -> Receipt? {
+        receipts.first { $0.appointmentID == appointmentID }
+    }
+
+    /// Stores the receipt and deducts the parts used from stock (saved together in Firestore).
+    func issueReceipt(_ receipt: Receipt, parts: [(id: UUID, quantity: Int)]) {
+        receipts.append(receipt)
+        var changed: [InventoryItem] = []
+        for part in parts {
+            if let item = applyStock(part.id, by: -part.quantity, countAsUsed: true) { changed.append(item) }
+        }
+        CloudStore.shared.commitReceipt(receipt, items: changed)
+    }
+
+    func markReceiptSent(_ id: UUID) {
+        guard let i = receipts.firstIndex(where: { $0.id == id }) else { return }
+        receipts[i].sentAt = .now
+        CloudStore.shared.save(receipts[i])
+    }
+
+    // MARK: Vehicles (still local)
     func updateVehicle(_ vehicle: Vehicle) {
         guard let i = vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
         vehicles[i] = vehicle

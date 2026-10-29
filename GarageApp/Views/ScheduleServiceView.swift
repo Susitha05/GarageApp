@@ -60,7 +60,7 @@ struct ScheduleServiceView: View {
                         .disabled(app.vehicles.isEmpty)
                 }
 
-                let mine = app.appointments.filter { $0.customerName == app.userName }
+                let mine = app.isCloud ? app.appointments : app.appointments.filter { $0.customerName == app.userName }
                 if !mine.isEmpty {
                     Section("My appointments") {
                         ForEach(mine) { a in
@@ -83,24 +83,42 @@ struct ScheduleServiceView: View {
             .alert("Booking requested", isPresented: $confirmed) {
                 Button("OK", role: .cancel) {}
             } message: {
-                Text("\(service.rawValue) at \(garage), \(slot). We'll let you know when you arrive.")
+                Text("\(service.rawValue) at \(garage), \(slot). A confirmation email is being sent to \(app.email).")
             }
         }
     }
 
+    /// The chosen date combined with the chosen time slot.
+    private var scheduledDate: Date {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "hh:mm a"
+        guard let time = formatter.date(from: slot) else { return date }
+        let parts = Calendar.current.dateComponents([.hour, .minute], from: time)
+        return Calendar.current.date(bySettingHour: parts.hour ?? 9, minute: parts.minute ?? 0,
+                                     second: 0, of: date) ?? date
+    }
+
     private func book() {
         let vehicle = app.vehicles.first { $0.id == vehicleID } ?? app.vehicles.first
-        let lead = max(0, Calendar.current.dateComponents([.day], from: .now, to: date).day ?? 0)
-        app.appointments.append(Appointment(customerName: app.userName,
-                                            vehicleTitle: vehicle?.title ?? "Vehicle",
-                                            service: service, garage: garage,
-                                            date: date, status: .pending,
-                                            bookedDaysAhead: lead, isFirstVisit: false))
-        app.refreshNoShowRisk()
+        let when = scheduledDate
+        let lead = max(0, Calendar.current.dateComponents([.day], from: .now, to: when).day ?? 0)
+        let appointment = Appointment(customerName: app.userName,
+                                      vehicleTitle: vehicle?.title ?? "Vehicle",
+                                      service: service, garage: garage,
+                                      date: when, status: .pending,
+                                      bookedDaysAhead: lead, isFirstVisit: false,
+                                      customerEmail: app.email, customerUid: app.userUid)
+        app.addAppointment(appointment)      // saved to Firestore, so the garage owner sees it
         app.publishWidgetSnapshot()
         if let g = MockData.garages.first(where: { $0.name == garage }) {
             location.startGeofence(id: g.name, center: g.coordinate)   // arrival detection
         }
+
+        // Confirmation email to the customer (needs the Firebase email extension, see README).
+        let mail = EmailTemplates.bookingReceived(appointment)
+        let address = app.email
+        Task { _ = await EmailService.queue(to: address, subject: mail.subject, text: mail.body) }
         confirmed = true
     }
 }

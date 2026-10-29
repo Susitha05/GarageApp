@@ -233,6 +233,7 @@ final class AuthService {
 
     func signOut() {
         TowService.shared.stop()
+        CloudStore.shared.stop()
         LocationManager.shared.stop()
         AppLock.shared.reset()
         if usesFirebase {

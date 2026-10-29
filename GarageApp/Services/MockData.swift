@@ -18,18 +18,18 @@ enum MockData {
 
     static let appointments: [Appointment] = [
         Appointment(customerName: "Nimal Perera", vehicleTitle: "2016 Toyota Axio", service: .oilChange, date: days(1), status: .pending, noShowRisk: 0.12),
-        Appointment(customerName: "Kasun Silva", vehicleTitle: "2019 Honda Vezel", service: .brakeService, date: days(1), status: .accepted, assignedStaff: "Ruwan", noShowRisk: 0.46, bookedDaysAhead: 14, pastNoShows: 1),
+        Appointment(customerName: "Kasun Silva", vehicleTitle: "2019 Honda Vezel", service: .brakeService, date: days(1), status: .accepted, assignedStaff: "Ruwan Kumara", noShowRisk: 0.46, bookedDaysAhead: 14, pastNoShows: 1),
         Appointment(customerName: "Dilani Fernando", vehicleTitle: "2014 Nissan Leaf", service: .batteryCheck, date: days(2), status: .pending, noShowRisk: 0.71, bookedDaysAhead: 25, pastNoShows: 2, isFirstVisit: true),
-        Appointment(customerName: "Sahan Jayasuriya", vehicleTitle: "2018 Suzuki Wagon R", service: .fullService, date: days(0), status: .inProgress, assignedStaff: "Chamara", noShowRisk: 0.05),
-        Appointment(customerName: "Amali Weerasinghe", vehicleTitle: "2020 Kia Picanto", service: .acService, date: days(-1), status: .completed, assignedStaff: "Ruwan", noShowRisk: 0.08)
+        Appointment(customerName: "Sahan Jayasuriya", vehicleTitle: "2018 Suzuki Wagon R", service: .fullService, date: days(0), status: .inProgress, assignedStaff: "Chamara Dias", noShowRisk: 0.05),
+        Appointment(customerName: "Amali Weerasinghe", vehicleTitle: "2020 Kia Picanto", service: .acService, date: days(-1), status: .completed, assignedStaff: "Ruwan Kumara", noShowRisk: 0.08)
     ]
 
     static let inventory: [InventoryItem] = [
-        InventoryItem(name: "Engine Oil 5W-30 (4L)", sku: "OIL-530", stock: 18, minThreshold: 10, usedThisMonth: 24, forecastNextMonth: 28),
-        InventoryItem(name: "Brake Pads (Front)", sku: "BRK-F01", stock: 6, minThreshold: 8, usedThisMonth: 11, forecastNextMonth: 13),
-        InventoryItem(name: "Oil Filter", sku: "FLT-OIL", stock: 32, minThreshold: 15, usedThisMonth: 26, forecastNextMonth: 27),
-        InventoryItem(name: "Car Battery 12V", sku: "BAT-12V", stock: 3, minThreshold: 4, usedThisMonth: 5, forecastNextMonth: 7),
-        InventoryItem(name: "Air Filter", sku: "FLT-AIR", stock: 14, minThreshold: 8, usedThisMonth: 9, forecastNextMonth: 10)
+        InventoryItem(name: "Engine Oil 5W-30 (4L)", sku: "OIL-530", stock: 18, minThreshold: 10, usedThisMonth: 24, forecastNextMonth: 28, unitPrice: 4500),
+        InventoryItem(name: "Brake Pads (Front)", sku: "BRK-F01", stock: 6, minThreshold: 8, usedThisMonth: 11, forecastNextMonth: 13, unitPrice: 9500),
+        InventoryItem(name: "Oil Filter", sku: "FLT-OIL", stock: 32, minThreshold: 15, usedThisMonth: 26, forecastNextMonth: 27, unitPrice: 1200),
+        InventoryItem(name: "Car Battery 12V", sku: "BAT-12V", stock: 3, minThreshold: 4, usedThisMonth: 5, forecastNextMonth: 7, unitPrice: 22000),
+        InventoryItem(name: "Air Filter", sku: "FLT-AIR", stock: 14, minThreshold: 8, usedThisMonth: 9, forecastNextMonth: 10, unitPrice: 1800)
     ]
 
     static let staff: [StaffMember] = [

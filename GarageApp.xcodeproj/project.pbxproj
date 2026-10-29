@@ -59,6 +59,14 @@
 		D7BF86A33090558700511291 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D7BF86A23090558700511291 /* FirebaseAuth */; };
 		D7BF86A5309055A800511291 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D7BF86A4309055A800511291 /* FirebaseFirestore */; };
 		D7BF86A7309055B000511291 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = D7BF86A6309055B000511291 /* GoogleSignIn */; };
+		D7C0E8DF3091A3CA00CEC9E7 /* ReceiptBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0E8DE3091A3CA00CEC9E7 /* ReceiptBuilderView.swift */; };
+		D7C0E8E13091A4F400CEC9E7 /* CloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0E8E03091A4F400CEC9E7 /* CloudStore.swift */; };
+		D7C0E8E33091A52B00CEC9E7 /* CustomerReceiptsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0E8E23091A52B00CEC9E7 /* CustomerReceiptsView.swift */; };
+		D7C0E8E53091A5EE00CEC9E7 /* EmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0E8E43091A5EE00CEC9E7 /* EmailService.swift */; };
+		D7C0E8E73091A64D00CEC9E7 /* AppointmentEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0E8E63091A64D00CEC9E7 /* AppointmentEditView.swift */; };
+		D7C0E8E93091AB8E00CEC9E7 /* InventoryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0E8E83091AB8E00CEC9E7 /* InventoryEditView.swift */; };
+		D7C0E8EB3091ABEB00CEC9E7 /* ReceiptDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0E8EA3091ABEB00CEC9E7 /* ReceiptDocumentView.swift */; };
+		D7C0E8ED3091AC1400CEC9E7 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0E8EC3091AC1400CEC9E7 /* MailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +141,14 @@
 		D7BF869B3090516A00511291 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D7BF869D309051A000511291 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		D7BF869F309051D900511291 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		D7C0E8DE3091A3CA00CEC9E7 /* ReceiptBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptBuilderView.swift; sourceTree = "<group>"; };
+		D7C0E8E03091A4F400CEC9E7 /* CloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStore.swift; sourceTree = "<group>"; };
+		D7C0E8E23091A52B00CEC9E7 /* CustomerReceiptsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerReceiptsView.swift; sourceTree = "<group>"; };
+		D7C0E8E43091A5EE00CEC9E7 /* EmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailService.swift; sourceTree = "<group>"; };
+		D7C0E8E63091A64D00CEC9E7 /* AppointmentEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentEditView.swift; sourceTree = "<group>"; };
+		D7C0E8E83091AB8E00CEC9E7 /* InventoryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditView.swift; sourceTree = "<group>"; };
+		D7C0E8EA3091ABEB00CEC9E7 /* ReceiptDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDocumentView.swift; sourceTree = "<group>"; };
+		D7C0E8EC3091AC1400CEC9E7 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +301,12 @@
 				D7BF869B3090516A00511291 /* LoginView.swift */,
 				D7BF869D309051A000511291 /* SignUpView.swift */,
 				D710E1E03090ADEB00C53492 /* LockView.swift */,
+				D7C0E8DE3091A3CA00CEC9E7 /* ReceiptBuilderView.swift */,
+				D7C0E8E23091A52B00CEC9E7 /* CustomerReceiptsView.swift */,
+				D7C0E8E63091A64D00CEC9E7 /* AppointmentEditView.swift */,
+				D7C0E8E83091AB8E00CEC9E7 /* InventoryEditView.swift */,
+				D7C0E8EA3091ABEB00CEC9E7 /* ReceiptDocumentView.swift */,
+				D7C0E8EC3091AC1400CEC9E7 /* MailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -308,6 +330,8 @@
 				D7BF869F309051D900511291 /* AuthService.swift */,
 				D710E1DC3090A9FD00C53492 /* Applock.swift */,
 				D710E1DE3090AAE600C53492 /* TowService.swift */,
+				D7C0E8E03091A4F400CEC9E7 /* CloudStore.swift */,
+				D7C0E8E43091A5EE00CEC9E7 /* EmailService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -461,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D73B1FAF308E542F008C3A39 /* GarageWidgetBundle.swift in Sources */,
+				D7C0E8E93091AB8E00CEC9E7 /* InventoryEditView.swift in Sources */,
 				D76B653C308DE8B500FECADB /* VehicleDetailView.swift in Sources */,
 				D710E1DD3090A9FD00C53492 /* Applock.swift in Sources */,
 				D73B1FAD308E5407008C3A39 /* GarageStatusWidgetView.swift in Sources */,
@@ -471,9 +496,13 @@
 				D73B1F98308E4270008C3A39 /*  DriverActiveJobView.swift in Sources */,
 				D73B1F86308DE905008C3A39 /* VehicleListView.swift in Sources */,
 				D76B64EE308DE06100FECADB /* ContentView.swift in Sources */,
+				D7C0E8E13091A4F400CEC9E7 /* CloudStore.swift in Sources */,
+				D7C0E8E53091A5EE00CEC9E7 /* EmailService.swift in Sources */,
+				D7C0E8DF3091A3CA00CEC9E7 /* ReceiptBuilderView.swift in Sources */,
 				D76B64F0308DE06100FECADB /* Item.swift in Sources */,
 				D73B1F9A308E429E008C3A39 /* DriverJobsView.swift in Sources */,
 				D73B1F8C308DE9B3008C3A39 /* SettingsView.swift in Sources */,
+				D7C0E8E33091A52B00CEC9E7 /* CustomerReceiptsView.swift in Sources */,
 				D73B1F90308DED89008C3A39 /* GarageDashboardView.swift in Sources */,
 				D7BF869C3090516A00511291 /* LoginView.swift in Sources */,
 				D76B6528308DE3F100FECADB /* AppState.swift in Sources */,
@@ -484,6 +513,7 @@
 				D76B6538308DE86D00FECADB /* ScheduleServiceView.swift in Sources */,
 				D73B1FA5308E5067008C3A39 /* MLService.swift in Sources */,
 				D710E1E13090ADEB00C53492 /* LockView.swift in Sources */,
+				D7C0E8ED3091AC1400CEC9E7 /* MailView.swift in Sources */,
 				D73B1FAA308E50FB008C3A39 /* WidgetSnapshot.swift in Sources */,
 				D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */,
 				D76B652A308DE42800FECADB /* MockData.swift in Sources */,
@@ -497,6 +527,8 @@
 				D7BF86983090510D00511291 /* AuthFlowView.swift in Sources */,
 				D73B1F8E308DED62008C3A39 /* AppointmentsView.swift in Sources */,
 				D76B6536308DE84500FECADB /* CustomerTabView.swift in Sources */,
+				D7C0E8E73091A64D00CEC9E7 /* AppointmentEditView.swift in Sources */,
+				D7C0E8EB3091ABEB00CEC9E7 /* ReceiptDocumentView.swift in Sources */,
 				D76B6532308DE7E700FECADB /* CustomerHomeView.swift in Sources */,
 				D76B6530308DE7B700FECADB /* AddVehicleView.swift in Sources */,
 				D73B1F8A308DE992008C3A39 /* ProfileView.swift in Sources */,

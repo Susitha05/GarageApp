@@ -88,6 +88,21 @@ enum AppointmentStatus: String, CaseIterable, Identifiable {
     case pending = "Pending", accepted = "Accepted", inProgress = "In Progress"
     case completed = "Completed", rejected = "Rejected"
     var id: String { rawValue }
+
+    /// Value stored in Firestore.
+    var code: String {
+        switch self {
+        case .pending: "pending"
+        case .accepted: "accepted"
+        case .inProgress: "inProgress"
+        case .completed: "completed"
+        case .rejected: "rejected"
+        }
+    }
+    init?(code: String) {
+        guard let value = Self.allCases.first(where: { $0.code == code }) else { return nil }
+        self = value
+    }
     var color: Color {
         switch self {
         case .pending: .orange
@@ -112,6 +127,9 @@ struct Appointment: Identifiable {
     var bookedDaysAhead: Int = 2
     var pastNoShows: Int = 0
     var isFirstVisit: Bool = false
+    var customerEmail: String = ""
+    var notes: String = ""
+    var customerUid: String = ""
 }
 
 struct GarageInfo: Identifiable {
@@ -130,6 +148,7 @@ struct InventoryItem: Identifiable {
     var minThreshold: Int
     var usedThisMonth: Int
     var forecastNextMonth: Int
+    var unitPrice: Double = 0
     var isLow: Bool { stock <= minThreshold }
 }
 
@@ -239,4 +258,43 @@ struct Anomaly: Identifiable {
 
 func rs(_ value: Double) -> String {
     "Rs. " + value.formatted(.number.precision(.fractionLength(0)))
+}
+
+extension ServiceKind {
+    /// Default labour / service charge (LKR) pre-filled on receipts.
+    var basePrice: Double {
+        switch self {
+        case .oilChange: 3_500
+        case .brakeService: 8_500
+        case .tireRotation: 2_500
+        case .batteryCheck: 1_500
+        case .acService: 6_000
+        case .fullService: 18_000
+        }
+    }
+}
+
+struct ReceiptLine: Identifiable, Equatable {
+    var id = UUID()
+    var title: String
+    var quantity: Int
+    var unitPrice: Double
+    var amount: Double { Double(quantity) * unitPrice }
+}
+
+struct Receipt: Identifiable, Equatable {
+    var id = UUID()
+    var appointmentID: UUID
+    var number: String
+    var date: Date = .now
+    var customerName: String
+    var customerEmail: String
+    var vehicleTitle: String
+    var garage: String
+    var mechanic: String
+    var lines: [ReceiptLine]
+    var notes: String = ""
+    var sentAt: Date? = nil
+    var customerUid: String = ""
+    var total: Double { lines.reduce(0) { $0 + $1.amount } }
 }
