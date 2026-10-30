@@ -4,7 +4,7 @@ import WidgetKit
 
 enum AppGroup {
     /// Must match the App Group capability enabled on both targets.
-    static let id = "group.com.example.smartgarage"
+    static let id = "group.susitha.GarageApp"
 }
 
 struct WidgetSnapshot: Codable, Equatable {

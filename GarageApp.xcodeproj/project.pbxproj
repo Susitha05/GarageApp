@@ -25,8 +25,13 @@
 		D73B1FA5308E5067008C3A39 /* MLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FA4308E5067008C3A39 /* MLService.swift */; };
 		D73B1FA7308E5084008C3A39 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FA6308E5084008C3A39 /* LocationManager.swift */; };
 		D73B1FAA308E50FB008C3A39 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FA9308E50FB008C3A39 /* WidgetSnapshot.swift */; };
-		D73B1FAD308E5407008C3A39 /* GarageStatusWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FAC308E5407008C3A39 /* GarageStatusWidgetView.swift */; };
-		D73B1FAF308E542F008C3A39 /* GarageWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FAE308E542F008C3A39 /* GarageWidgetBundle.swift */; };
+		D73E77243094F671007E7E58 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73E77233094F670007E7E58 /* WidgetKit.framework */; };
+		D73E77263094F671007E7E58 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73E77253094F671007E7E58 /* SwiftUI.framework */; };
+		D73E772D3094F676007E7E58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D73E772C3094F676007E7E58 /* Assets.xcassets */; };
+		D73E77323094F676007E7E58 /* GarageWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D73E77223094F670007E7E58 /* GarageWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D73E773D3094F95F007E7E58 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FA9308E50FB008C3A39 /* WidgetSnapshot.swift */; };
+		D73E77453094FA86007E7E58 /* GarageStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E77413094F9EB007E7E58 /* GarageStatusWidget.swift */; };
+		D73E77463094FA8B007E7E58 /* GarageWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E77433094FA21007E7E58 /* GarageWidgetBundle.swift */; };
 		D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64EB308DE06100FECADB /* GarageAppApp.swift */; };
 		D76B64EE308DE06100FECADB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64ED308DE06100FECADB /* ContentView.swift */; };
 		D76B64F0308DE06100FECADB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64EF308DE06100FECADB /* Item.swift */; };
@@ -70,6 +75,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D73E772F3094F676007E7E58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D76B64E0308DE06100FECADB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D73E77213094F670007E7E58;
+			remoteInfo = GarageWidgetExtension;
+		};
 		D76B64FD308DE06500FECADB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D76B64E0308DE06100FECADB /* Project object */;
@@ -85,6 +97,20 @@
 			remoteInfo = GarageApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D73E77313094F676007E7E58 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D73E77323094F676007E7E58 /* GarageWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D710E1DC3090A9FD00C53492 /* Applock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Applock.swift; sourceTree = "<group>"; };
@@ -105,8 +131,13 @@
 		D73B1FA4308E5067008C3A39 /* MLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLService.swift; sourceTree = "<group>"; };
 		D73B1FA6308E5084008C3A39 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D73B1FA9308E50FB008C3A39 /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
-		D73B1FAC308E5407008C3A39 /* GarageStatusWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageStatusWidgetView.swift; sourceTree = "<group>"; };
-		D73B1FAE308E542F008C3A39 /* GarageWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageWidgetBundle.swift; sourceTree = "<group>"; };
+		D73E77223094F670007E7E58 /* GarageWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GarageWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D73E77233094F670007E7E58 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D73E77253094F671007E7E58 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D73E772C3094F676007E7E58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D73E772E3094F676007E7E58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D73E77413094F9EB007E7E58 /* GarageStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageStatusWidget.swift; sourceTree = "<group>"; };
+		D73E77433094FA21007E7E58 /* GarageWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageWidgetBundle.swift; sourceTree = "<group>"; };
 		D76B64E8308DE06100FECADB /* GarageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarageApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76B64EB308DE06100FECADB /* GarageAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppApp.swift; sourceTree = "<group>"; };
 		D76B64ED308DE06100FECADB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -152,6 +183,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D73E771F3094F670007E7E58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D73E77263094F671007E7E58 /* SwiftUI.framework in Frameworks */,
+				D73E77243094F671007E7E58 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D76B64E5308DE06100FECADB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,11 +234,20 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
-		D73B1FAB308E53CC008C3A39 /* Widget */ = {
+		D73E77273094F671007E7E58 /* GarageWidget */ = {
 			isa = PBXGroup;
 			children = (
-				D73B1FAC308E5407008C3A39 /* GarageStatusWidgetView.swift */,
-				D73B1FAE308E542F008C3A39 /* GarageWidgetBundle.swift */,
+				D73E772C3094F676007E7E58 /* Assets.xcassets */,
+				D73E772E3094F676007E7E58 /* Info.plist */,
+			);
+			path = GarageWidget;
+			sourceTree = "<group>";
+		};
+		D73E77403094F9A9007E7E58 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				D73E77413094F9EB007E7E58 /* GarageStatusWidget.swift */,
+				D73E77433094FA21007E7E58 /* GarageWidgetBundle.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -209,6 +258,7 @@
 				D76B64EA308DE06100FECADB /* GarageApp */,
 				D76B64FF308DE06500FECADB /* GarageAppTests */,
 				D76B6509308DE06500FECADB /* GarageAppUITests */,
+				D73E77273094F671007E7E58 /* GarageWidget */,
 				D76B64E9308DE06100FECADB /* Products */,
 				D7BF86A13090558700511291 /* Frameworks */,
 			);
@@ -220,6 +270,7 @@
 				D76B64E8308DE06100FECADB /* GarageApp.app */,
 				D76B64FC308DE06500FECADB /* GarageAppTests.xctest */,
 				D76B6506308DE06500FECADB /* GarageAppUITests.xctest */,
+				D73E77223094F670007E7E58 /* GarageWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,7 +278,7 @@
 		D76B64EA308DE06100FECADB /* GarageApp */ = {
 			isa = PBXGroup;
 			children = (
-				D73B1FAB308E53CC008C3A39 /* Widget */,
+				D73E77403094F9A9007E7E58 /* Widget */,
 				D73B1FA8308E50EB008C3A39 /* Share */,
 				D73B1FA3308E4D05008C3A39 /* MLModels */,
 				D76B6525308DE3C900FECADB /* Services */,
@@ -339,6 +390,8 @@
 		D7BF86A13090558700511291 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D73E77233094F670007E7E58 /* WidgetKit.framework */,
+				D73E77253094F671007E7E58 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -346,6 +399,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D73E77213094F670007E7E58 /* GarageWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D73E77353094F676007E7E58 /* Build configuration list for PBXNativeTarget "GarageWidgetExtension" */;
+			buildPhases = (
+				D73E771E3094F670007E7E58 /* Sources */,
+				D73E771F3094F670007E7E58 /* Frameworks */,
+				D73E77203094F670007E7E58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GarageWidgetExtension;
+			productName = GarageWidgetExtension;
+			productReference = D73E77223094F670007E7E58 /* GarageWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D76B64E7308DE06100FECADB /* GarageApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D76B6510308DE06500FECADB /* Build configuration list for PBXNativeTarget "GarageApp" */;
@@ -353,10 +423,12 @@
 				D76B64E4308DE06100FECADB /* Sources */,
 				D76B64E5308DE06100FECADB /* Frameworks */,
 				D76B64E6308DE06100FECADB /* Resources */,
+				D73E77313094F676007E7E58 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D73E77303094F676007E7E58 /* PBXTargetDependency */,
 			);
 			name = GarageApp;
 			packageProductDependencies = (
@@ -414,6 +486,10 @@
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					D73E77213094F670007E7E58 = {
+						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
+					};
 					D76B64E7308DE06100FECADB = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -447,11 +523,20 @@
 				D76B64E7308DE06100FECADB /* GarageApp */,
 				D76B64FB308DE06500FECADB /* GarageAppTests */,
 				D76B6505308DE06500FECADB /* GarageAppUITests */,
+				D73E77213094F670007E7E58 /* GarageWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D73E77203094F670007E7E58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D73E772D3094F676007E7E58 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D76B64E6308DE06100FECADB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -480,15 +565,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D73E771E3094F670007E7E58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D73E77463094FA8B007E7E58 /* GarageWidgetBundle.swift in Sources */,
+				D73E77453094FA86007E7E58 /* GarageStatusWidget.swift in Sources */,
+				D73E773D3094F95F007E7E58 /* WidgetSnapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D76B64E4308DE06100FECADB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D73B1FAF308E542F008C3A39 /* GarageWidgetBundle.swift in Sources */,
 				D7C0E8E93091AB8E00CEC9E7 /* InventoryEditView.swift in Sources */,
 				D76B653C308DE8B500FECADB /* VehicleDetailView.swift in Sources */,
 				D710E1DD3090A9FD00C53492 /* Applock.swift in Sources */,
-				D73B1FAD308E5407008C3A39 /* GarageStatusWidgetView.swift in Sources */,
 				D73B1F92308E37C3008C3A39 /* GarageTabView.swift in Sources */,
 				D73B1FA7308E5084008C3A39 /* LocationManager.swift in Sources */,
 				D76B6524308DE3B100FECADB /* UserRole.swift in Sources */,
@@ -557,6 +650,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D73E77303094F676007E7E58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D73E77213094F670007E7E58 /* GarageWidgetExtension */;
+			targetProxy = D73E772F3094F676007E7E58 /* PBXContainerItemProxy */;
+		};
 		D76B64FE308DE06500FECADB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D76B64E7308DE06100FECADB /* GarageApp */;
@@ -570,6 +668,63 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		D73E77333094F676007E7E58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R666JHJ33X;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GarageWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GarageWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = susitha.GarageApp.GarageWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D73E77343094F676007E7E58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R666JHJ33X;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GarageWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GarageWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = susitha.GarageApp.GarageWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D76B650E308DE06500FECADB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -692,6 +847,7 @@
 		D76B6511308DE06500FECADB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GarageApp/GarageApp.entitlements;
@@ -725,6 +881,7 @@
 		D76B6512308DE06500FECADB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GarageApp/GarageApp.entitlements;
@@ -830,6 +987,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D73E77353094F676007E7E58 /* Build configuration list for PBXNativeTarget "GarageWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D73E77333094F676007E7E58 /* Debug */,
+				D73E77343094F676007E7E58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D76B64E3308DE06100FECADB /* Build configuration list for PBXProject "GarageApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

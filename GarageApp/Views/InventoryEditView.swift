@@ -7,7 +7,7 @@ struct InventoryEditView: View {
 
     private let editing: InventoryItem?
     @State private var name: String
-    @State private var sku: String
+    @State private var sku: String		
     @State private var stock: String
     @State private var minimum: String
     @State private var price: String
