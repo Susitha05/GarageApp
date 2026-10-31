@@ -1,36 +1,37 @@
-//
-//  GarageAppTests.swift
-//  GarageAppTests
-//
-//  Created by TUTU on 24/10/2026.
-//
-
 import XCTest
 @testable import GarageApp
 
 final class GarageAppTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    // 1. Appointment status rules
+    func testAppointmentStatusTransitions() {
+        XCTAssertTrue(AppointmentStatus.pending.canTransition(to: .confirmed))
+        XCTAssertTrue(AppointmentStatus.confirmed.canTransition(to: .inProgress))
+        XCTAssertFalse(AppointmentStatus.pending.canTransition(to: .completed))
+        XCTAssertFalse(AppointmentStatus.completed.canTransition(to: .pending))
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    // 2. Tow status steps
+    func testTowStatusProgression() {
+        XCTAssertEqual(TowStatus.accepted.next, .enRoute)
+        XCTAssertEqual(TowStatus.towing.next, .completed)
+        XCTAssertNil(TowStatus.completed.next)
+        XCTAssertFalse(TowStatus.cancelled.isActive)
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    // 3. Maintenance prediction (rule-based)
+    func testMaintenanceRemaining() {
+        let overdue = MLService.ruleRemaining(.oilChange, kmSince: 12_000, daysSince: 100, avgKmPerMonth: 1000)
+        let fresh = MLService.ruleRemaining(.oilChange, kmSince: 0, daysSince: 0, avgKmPerMonth: 1000)
+        XCTAssertLessThan(overdue, 0)
+        XCTAssertGreaterThan(fresh, 5_000)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    // 4. Forecast follows a linear trend
+    func testForecastFollowsTrend() {
+        let history = (0..<12).map { Double($0) * 10 }
+        let forecast = Analytics.forecast(history, season: 12, horizon: 2)
+        XCTAssertEqual(forecast.count, 2)
+        XCTAssertEqual(forecast[0], 120, accuracy: 0.5)
     }
-
 }
