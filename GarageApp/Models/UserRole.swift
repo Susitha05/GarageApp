@@ -34,7 +34,8 @@ enum Risk: String {
     }
 }
 
-struct Vehicle: Identifiable {
+// Codable so vehicles can be saved to the phone.
+struct Vehicle: Identifiable, Codable {
     var id = UUID()
     var registration: String
     var make: String
@@ -65,7 +66,22 @@ enum ServiceKind: String, CaseIterable, Identifiable {
     }
 }
 
-struct ServiceRecord: Identifiable {
+extension ServiceKind {
+    /// Part names must match the names used in MaintenancePredictor exactly.
+    var partsReplaced: [String] {
+        switch self {
+        case .oilChange: ["Engine Oil"]
+        case .brakeService: ["Brake Pads"]
+        case .tireRotation: ["Tyres"]
+        case .batteryCheck: ["Battery"]
+        case .acService: []
+        case .fullService: ["Engine Oil", "Air Filter"]
+        }
+    }
+}
+
+// Codable so service history can be saved to the phone.
+struct ServiceRecord: Identifiable, Codable {
     var id = UUID()
     var vehicleID: UUID
     var title: String
@@ -74,6 +90,7 @@ struct ServiceRecord: Identifiable {
     var cost: Double
     var garage: String
     var parts: [String]
+    var appointmentID: UUID? = nil     // links a record to the booking that created it
 }
 
 struct PredictedMaintenance: Identifiable {

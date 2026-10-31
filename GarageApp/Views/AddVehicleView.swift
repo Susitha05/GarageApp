@@ -56,9 +56,8 @@ struct AddVehicleView: View {
             vehicle.mileage = Int(mileage) ?? vehicle.mileage
             app.updateVehicle(vehicle)
         } else {
-            app.vehicles.append(Vehicle(registration: registration, make: make, model: model,
-                                        year: year, mileage: Int(mileage) ?? 0))
-            app.publishWidgetSnapshot()
+            app.addVehicle(Vehicle(registration: registration, make: make, model: model,
+                                   year: year, mileage: Int(mileage) ?? 0))
         }
         dismiss()
     }

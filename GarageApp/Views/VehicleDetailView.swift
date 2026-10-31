@@ -6,6 +6,7 @@ struct VehicleDetailView: View {
     @Environment(\.dismiss) private var dismiss
     let vehicleID: UUID
     @State private var showEdit = false
+    @State private var showAddService = false
     @State private var confirmDelete = false
     private let predictor = MaintenancePredictor()
 
@@ -24,6 +25,7 @@ struct VehicleDetailView: View {
         .toolbar {
             if let vehicle {
                 Menu {
+                    Button { showAddService = true } label: { Label("Log a service", systemImage: "plus.circle") }
                     Button { showEdit = true } label: { Label("Edit vehicle", systemImage: "pencil") }
                     Button(role: .destructive) { confirmDelete = true } label: { Label("Delete vehicle", systemImage: "trash") }
                 } label: {
@@ -34,6 +36,9 @@ struct VehicleDetailView: View {
         }
         .sheet(isPresented: $showEdit) {
             if let vehicle { AddVehicleView(editing: vehicle) }
+        }
+        .sheet(isPresented: $showAddService) {
+            if let vehicle { AddServiceView(vehicle: vehicle) }
         }
         .confirmationDialog("Delete this vehicle?", isPresented: $confirmDelete, titleVisibility: .visible) {
             Button("Delete", role: .destructive) {

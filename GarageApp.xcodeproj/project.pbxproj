@@ -42,7 +42,6 @@
 		D76B650B308DE06500FECADB /* GarageAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B650A308DE06500FECADB /* GarageAppUITests.swift */; };
 		D76B650D308DE06500FECADB /* GarageAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B650C308DE06500FECADB /* GarageAppUITestsLaunchTests.swift */; };
 		D76B651C308DE1E200FECADB /* RoleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B651B308DE1E200FECADB /* RoleSelectionView.swift */; };
-		D76B6524308DE3B100FECADB /* UserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6523308DE3B100FECADB /* UserRole.swift */; };
 		D76B6528308DE3F100FECADB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6527308DE3F100FECADB /* AppState.swift */; };
 		D76B652A308DE42800FECADB /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6529308DE42800FECADB /* MockData.swift */; };
 		D76B652C308DE6D200FECADB /* MaintenancePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B652B308DE6D200FECADB /* MaintenancePredictor.swift */; };
@@ -54,6 +53,11 @@
 		D76B6538308DE86D00FECADB /* ScheduleServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6537308DE86D00FECADB /* ScheduleServiceView.swift */; };
 		D76B653A308DE89300FECADB /* TowRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B6539308DE89300FECADB /* TowRequestView.swift */; };
 		D76B653C308DE8B500FECADB /* VehicleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B653B308DE8B500FECADB /* VehicleDetailView.swift */; };
+		D7976B1A3095AE7300B4F357 /* UserRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7976B193095AE7300B4F357 /* UserRole.swift */; };
+		D7976B1C3095AECA00B4F357 /* MaintenanceRisk.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D7976B1B3095AECA00B4F357 /* MaintenanceRisk.mlmodel */; };
+		D7976B1E3095AEDC00B4F357 /* NoShowClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D7976B1D3095AEDC00B4F357 /* NoShowClassifier.mlmodel */; };
+		D7976B203095AEE700B4F357 /* RevenueForecaster.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D7976B1F3095AEE700B4F357 /* RevenueForecaster.mlmodel */; };
+		D7976B223095B80A00B4F357 /* Addserviceview .swift in Sources */ = {isa = PBXBuildFile; fileRef = D7976B213095B80A00B4F357 /* Addserviceview .swift */; };
 		D7BF868F309049DA00511291 /* firestore.rules in Resources */ = {isa = PBXBuildFile; fileRef = D7BF868E309049DA00511291 /* firestore.rules */; };
 		D7BF869130904AC600511291 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7BF869030904AC600511291 /* GoogleService-Info.plist */; };
 		D7BF8696309050D800511291 /* AuthComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BF8695309050D800511291 /* AuthComponents.swift */; };
@@ -155,7 +159,6 @@
 		D76B650A308DE06500FECADB /* GarageAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppUITests.swift; sourceTree = "<group>"; };
 		D76B650C308DE06500FECADB /* GarageAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D76B651B308DE1E200FECADB /* RoleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectionView.swift; sourceTree = "<group>"; };
-		D76B6523308DE3B100FECADB /* UserRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
 		D76B6527308DE3F100FECADB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D76B6529308DE42800FECADB /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		D76B652B308DE6D200FECADB /* MaintenancePredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenancePredictor.swift; sourceTree = "<group>"; };
@@ -167,6 +170,11 @@
 		D76B6537308DE86D00FECADB /* ScheduleServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleServiceView.swift; sourceTree = "<group>"; };
 		D76B6539308DE89300FECADB /* TowRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowRequestView.swift; sourceTree = "<group>"; };
 		D76B653B308DE8B500FECADB /* VehicleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailView.swift; sourceTree = "<group>"; };
+		D7976B193095AE7300B4F357 /* UserRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRole.swift; sourceTree = "<group>"; };
+		D7976B1B3095AECA00B4F357 /* MaintenanceRisk.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MaintenanceRisk.mlmodel; sourceTree = "<group>"; };
+		D7976B1D3095AEDC00B4F357 /* NoShowClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NoShowClassifier.mlmodel; sourceTree = "<group>"; };
+		D7976B1F3095AEE700B4F357 /* RevenueForecaster.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RevenueForecaster.mlmodel; sourceTree = "<group>"; };
+		D7976B213095B80A00B4F357 /* Addserviceview .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Addserviceview .swift"; sourceTree = "<group>"; };
 		D7BF868E309049DA00511291 /* firestore.rules */ = {isa = PBXFileReference; lastKnownFileType = text; path = firestore.rules; sourceTree = "<group>"; };
 		D7BF869030904AC600511291 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7BF8695309050D800511291 /* AuthComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComponents.swift; sourceTree = "<group>"; };
@@ -225,6 +233,9 @@
 		D73B1FA3308E4D05008C3A39 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
+				D7976B1F3095AEE700B4F357 /* RevenueForecaster.mlmodel */,
+				D7976B1D3095AEDC00B4F357 /* NoShowClassifier.mlmodel */,
+				D7976B1B3095AECA00B4F357 /* MaintenanceRisk.mlmodel */,
 			);
 			path = MLModels;
 			sourceTree = "<group>";
@@ -282,11 +293,11 @@
 		D76B64EA308DE06100FECADB /* GarageApp */ = {
 			isa = PBXGroup;
 			children = (
+				D7976B183095AE7300B4F357 /* Models */,
 				D73E77403094F9A9007E7E58 /* Widget */,
 				D73B1FA8308E50EB008C3A39 /* Share */,
 				D73B1FA3308E4D05008C3A39 /* MLModels */,
 				D76B6525308DE3C900FECADB /* Services */,
-				D76B6522308DE39200FECADB /* Models */,
 				D76B651A308DE18F00FECADB /* Views */,
 				D76B64EB308DE06100FECADB /* GarageAppApp.swift */,
 				D76B64ED308DE06100FECADB /* ContentView.swift */,
@@ -363,16 +374,9 @@
 				D7C0E8E83091AB8E00CEC9E7 /* InventoryEditView.swift */,
 				D7C0E8EA3091ABEB00CEC9E7 /* ReceiptDocumentView.swift */,
 				D7C0E8EC3091AC1400CEC9E7 /* MailView.swift */,
+				D7976B213095B80A00B4F357 /* Addserviceview .swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		D76B6522308DE39200FECADB /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				D76B6523308DE3B100FECADB /* UserRole.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		D76B6525308DE3C900FECADB /* Services */ = {
@@ -390,6 +394,14 @@
 				D7C0E8E43091A5EE00CEC9E7 /* EmailService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		D7976B183095AE7300B4F357 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D7976B193095AE7300B4F357 /* UserRole.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D7BF86A13090558700511291 /* Frameworks */ = {
@@ -589,7 +601,6 @@
 				D710E1DD3090A9FD00C53492 /* Applock.swift in Sources */,
 				D73B1F92308E37C3008C3A39 /* GarageTabView.swift in Sources */,
 				D73B1FA7308E5084008C3A39 /* LocationManager.swift in Sources */,
-				D76B6524308DE3B100FECADB /* UserRole.swift in Sources */,
 				D7BF86A0309051D900511291 /* AuthService.swift in Sources */,
 				D73B1F98308E4270008C3A39 /*  DriverActiveJobView.swift in Sources */,
 				D73B1F86308DE905008C3A39 /* VehicleListView.swift in Sources */,
@@ -610,9 +621,11 @@
 				D73B1F96308E3811008C3A39 /* InventoryView.swift in Sources */,
 				D7BF869A3090513900511291 /* ChooseRoleView.swift in Sources */,
 				D76B6538308DE86D00FECADB /* ScheduleServiceView.swift in Sources */,
+				D7976B1A3095AE7300B4F357 /* UserRole.swift in Sources */,
 				D73B1FA5308E5067008C3A39 /* MLService.swift in Sources */,
 				D710E1E13090ADEB00C53492 /* LockView.swift in Sources */,
 				D7C0E8ED3091AC1400CEC9E7 /* MailView.swift in Sources */,
+				D7976B203095AEE700B4F357 /* RevenueForecaster.mlmodel in Sources */,
 				D73B1FAA308E50FB008C3A39 /* WidgetSnapshot.swift in Sources */,
 				D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */,
 				D76B652A308DE42800FECADB /* MockData.swift in Sources */,
@@ -626,12 +639,15 @@
 				D7BF86983090510D00511291 /* AuthFlowView.swift in Sources */,
 				D73B1F8E308DED62008C3A39 /* AppointmentsView.swift in Sources */,
 				D76B6536308DE84500FECADB /* CustomerTabView.swift in Sources */,
+				D7976B1C3095AECA00B4F357 /* MaintenanceRisk.mlmodel in Sources */,
 				D7C0E8E73091A64D00CEC9E7 /* AppointmentEditView.swift in Sources */,
 				D7C0E8EB3091ABEB00CEC9E7 /* ReceiptDocumentView.swift in Sources */,
+				D7976B1E3095AEDC00B4F357 /* NoShowClassifier.mlmodel in Sources */,
 				D76B6532308DE7E700FECADB /* CustomerHomeView.swift in Sources */,
 				D76B6530308DE7B700FECADB /* AddVehicleView.swift in Sources */,
 				D73B1F8A308DE992008C3A39 /* ProfileView.swift in Sources */,
 				D76B652E308DE76700FECADB /* Components.swift in Sources */,
+				D7976B223095B80A00B4F357 /* Addserviceview .swift in Sources */,
 				D76B651C308DE1E200FECADB /* RoleSelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,7 +874,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = GarageApp/GarageApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -872,6 +888,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -893,7 +910,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = GarageApp/GarageApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -907,6 +924,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

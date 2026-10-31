@@ -29,6 +29,7 @@ final class AppState {
 
     init(role: UserRole? = nil) {
         self.role = role
+        loadSaved()                            // restore saved vehicles + service history
         if FirebaseApp.app() != nil {          // real app: data arrives from Firestore
             appointments = []
             inventory = []
@@ -60,6 +61,7 @@ final class AppState {
     func appointmentsDidSync() {
         refreshNoShowRisk()
         refreshStaffLoad()
+        recordCompletedServices()              // completed bookings become service history
         publishWidgetSnapshot()
     }
 
@@ -69,7 +71,7 @@ final class AppState {
         for i in appointments.indices {
             let a = appointments[i]
             let weekday = Calendar.current.component(.weekday, from: a.date)   // Sun = 1
-            let mondayFirst = (weekday + 5) % 7 + 1                              // Mon = 1 … Sun = 7
+            let mondayFirst = (weekday + 5) % 7 + 1                              // Mon = 1 ... Sun = 7
             if let p = MLService.shared.noShowProbability(leadTimeDays: a.bookedDaysAhead,
                                                           dayOfWeek: mondayFirst,
                                                           pastNoShows: a.pastNoShows,
@@ -202,17 +204,69 @@ final class AppState {
         CloudStore.shared.save(receipts[i])
     }
 
-    // MARK: Vehicles (still local)
+    // MARK: Vehicles + service history (saved on the phone)
+    func addVehicle(_ vehicle: Vehicle) {
+        vehicles.append(vehicle)
+        persist()
+        publishWidgetSnapshot()
+    }
+
     func updateVehicle(_ vehicle: Vehicle) {
         guard let i = vehicles.firstIndex(where: { $0.id == vehicle.id }) else { return }
         vehicles[i] = vehicle
+        persist()
         publishWidgetSnapshot()
     }
 
     func removeVehicle(_ id: UUID) {
         vehicles.removeAll { $0.id == id }
         records.removeAll { $0.vehicleID == id }
+        persist()
         publishWidgetSnapshot()
+    }
+
+    /// Logs a service: updates history, mileage, predictions and the widget.
+    func addRecord(_ record: ServiceRecord) {
+        records.append(record)
+        if let i = vehicles.firstIndex(where: { $0.id == record.vehicleID }) {
+            vehicles[i].mileage = max(vehicles[i].mileage, record.mileage)
+        }
+        persist()
+        publishWidgetSnapshot()
+    }
+
+    /// Turns the customer's completed bookings into service history (once per booking).
+    func recordCompletedServices() {
+        guard role == .customer, !userUid.isEmpty else { return }
+        var added = false
+        for a in appointments where a.status == .completed && a.customerUid == userUid {
+            guard !records.contains(where: { $0.appointmentID == a.id }),
+                  let v = vehicles.first(where: { $0.title == a.vehicleTitle }) else { continue }
+            records.append(ServiceRecord(vehicleID: v.id, title: a.service.rawValue, date: a.date,
+                                         mileage: v.mileage,
+                                         cost: receipt(for: a.id)?.total ?? a.service.basePrice,
+                                         garage: a.garage, parts: a.service.partsReplaced,
+                                         appointmentID: a.id))
+            added = true
+        }
+        if added { persist() }
+    }
+
+    // MARK: Persistence
+    private static var saveURL: URL { URL.documentsDirectory.appending(path: "garage-data.json") }
+    private struct Saved: Codable { var vehicles: [Vehicle]; var records: [ServiceRecord] }
+
+    /// Replaces the mock data with whatever was saved last time (if a save file exists).
+    private func loadSaved() {
+        guard let data = try? Data(contentsOf: Self.saveURL),
+              let saved = try? JSONDecoder().decode(Saved.self, from: data) else { return }
+        vehicles = saved.vehicles
+        records = saved.records
+    }
+
+    func persist() {
+        guard let data = try? JSONEncoder().encode(Saved(vehicles: vehicles, records: records)) else { return }
+        try? data.write(to: Self.saveURL, options: .atomic)
     }
 
     func signOut() {
