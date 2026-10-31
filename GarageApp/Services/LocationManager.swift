@@ -2,7 +2,7 @@ import Foundation
 import CoreLocation
 import MapKit
 
-/// One shared instance for the whole app: permission, live updates, reverse geocoding and a simple geofence.
+
 @Observable
 final class LocationManager: NSObject, CLLocationManagerDelegate {
     static let shared = LocationManager()
@@ -56,7 +56,6 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         isSampleLocation = false
     }
 
-    /// For simulators / testing when no GPS fix is available.
     func useSampleLocation() {
         isSampleLocation = true
         location = CLLocation(latitude: Self.fallback.latitude, longitude: Self.fallback.longitude)
@@ -68,7 +67,6 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         return location.distance(from: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)) / 1000
     }
 
-    // MARK: Geofencing
     func startGeofence(id: String, center: CLLocationCoordinate2D, radius: Double = 150) {
         arrivedRegionID = nil
         geofence = (id, center, radius)
@@ -81,7 +79,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         manager.startMonitoring(for: region)
     }
 
-    // MARK: CLLocationManagerDelegate
+
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         authorization = manager.authorizationStatus
         if isAuthorized { manager.startUpdatingLocation() }
@@ -119,7 +117,6 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 }
 
-/// Driving route + ETA via MapKit.
 enum RoutingService {
     static func route(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) async -> MKRoute? {
         let request = MKDirections.Request()

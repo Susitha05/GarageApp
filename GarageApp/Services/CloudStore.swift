@@ -2,13 +2,7 @@ import Foundation
 import FirebaseCore
 import FirebaseFirestore
 
-/// Syncs appointments, inventory and receipts with Firestore.
-/// Document IDs are the models' UUID strings, so the rest of the app keeps using `UUID` ids.
-///
-///  • Customer: reads their own appointments and receipts, creates appointments.
-///  • Garage owner: reads/writes all appointments and receipts for the garage, and the inventory.
-///
-/// Without Firebase (SwiftUI previews) or in skip-login mode nothing is synced and the demo data is used.
+
 @Observable
 final class CloudStore {
     static let shared = CloudStore()

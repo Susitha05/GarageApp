@@ -1,9 +1,7 @@
 import Foundation
 import CoreML
 
-/// Loads the compiled Core ML models bundled with the app (Xcode compiles the
-/// .mlmodel files in /MLModels into .mlmodelc automatically) and runs on-device inference.
-/// If a model is missing, every call returns nil so callers can use a rule-based fallback.
+
 final class MLService {
     static let shared = MLService()
 
@@ -27,7 +25,7 @@ final class MLService {
         return try? model.prediction(from: provider)
     }
 
-    // MARK: Predictive maintenance (classification)
+
     func maintenanceRisk(mileage: Int, vehicleAge: Int, kmSinceLast: Int, intervalKm: Int) -> (risk: Risk, confidence: Double)? {
         guard let out = run(maintenance, [
             "mileage": Double(mileage), "vehicle_age": Double(vehicleAge),
@@ -39,8 +37,8 @@ final class MLService {
         return (risk, confidence)
     }
 
-    // MARK: No-show prediction (classification)
-    /// dayOfWeek: Monday = 1 … Sunday = 7
+
+
     func noShowProbability(leadTimeDays: Int, dayOfWeek: Int, pastNoShows: Int, firstVisit: Bool) -> Double? {
         guard let out = run(noShow, [
             "lead_time_days": Double(leadTimeDays), "day_of_week": Double(dayOfWeek),
@@ -49,13 +47,12 @@ final class MLService {
         return probs["no_show"]?.doubleValue
     }
 
-    // MARK: Revenue forecast (regression)
     func nextMonthRevenue(monthOfYear: Int, previous: Double) -> Double? {
         guard let out = run(revenue, ["month_of_year": Double(monthOfYear), "prev_revenue": previous]) else { return nil }
         return out.featureValue(for: "revenue")?.doubleValue
     }
 
-    /// Appends `months` forecast points to the actual revenue series.
+
     func extendRevenue(_ actual: [RevenuePoint], months: Int = 2) -> [RevenuePoint] {
         let names = Calendar.current.shortMonthSymbols
         guard let last = actual.last, let idx = names.firstIndex(of: last.month) else { return actual }

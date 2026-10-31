@@ -1,7 +1,7 @@
 import Foundation
 import LocalAuthentication
 
-/// Face ID / Touch ID / passcode lock. Locks when the app goes to the background and on cold launch.
+
 @Observable
 final class AppLock {
     static let shared = AppLock()

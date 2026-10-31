@@ -4,7 +4,7 @@ import CoreLocation
 
 final class GarageAppTests: XCTestCase {
 
-    // MARK: - Helpers
+
     private let partNames = ["Engine Oil", "Air Filter", "Brake Pads", "Tyres", "Battery"]
 
     private func makeVehicle(mileage: Int = 60_000) -> Vehicle {
@@ -63,7 +63,7 @@ final class GarageAppTests: XCTestCase {
         XCTAssertFalse(TowStatus.cancelled.isActive)
     }
 
-    // MARK: - 2. Models
+
     func testVehicleTitle() {
         XCTAssertEqual(makeVehicle().title, "2019 Toyota Aqua")
     }
@@ -107,7 +107,7 @@ final class GarageAppTests: XCTestCase {
         XCTAssertEqual(text.filter(\.isNumber), "1500")
     }
 
-    // MARK: - 3. Service catalogue
+
     func testServicePartsMatchPredictorNames() {
         for kind in ServiceKind.allCases {
             for part in kind.partsReplaced {
@@ -123,7 +123,7 @@ final class GarageAppTests: XCTestCase {
         XCTAssertEqual(ServiceKind.oilChange.basePrice, 3_500)
     }
 
-    // MARK: - 4. Saving (Codable)
+
     func testVehicleAndRecordSurviveEncoding() throws {
         let vehicle = makeVehicle()
         let record = makeRecord(for: vehicle, mileage: 58_000, parts: ["Engine Oil"])

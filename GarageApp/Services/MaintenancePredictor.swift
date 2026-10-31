@@ -1,6 +1,5 @@
 import Foundation
 
-/// Uses the Core ML `MaintenanceRisk` model when bundled; otherwise falls back to a simple rule.
 struct MaintenancePredictor {
     private let intervals: [(part: String, km: Int)] = [
         ("Engine Oil", 5_000), ("Air Filter", 15_000), ("Brake Pads", 30_000),
