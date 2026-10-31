@@ -3,7 +3,7 @@ import WidgetKit
 
 
 enum AppGroup {
-    /// Must match the App Group capability enabled on both targets.
+   
     static let id = "group.susitha.GarageApp"
 }
 
@@ -11,7 +11,7 @@ struct WidgetSnapshot: Codable, Equatable {
     var vehicleName: String
     var topPart: String
     var dueInKm: Int
-    var risk: String            // "Low" | "Medium" | "High"
+    var risk: String
     var nextAppointmentTitle: String?
     var nextAppointmentDate: Date?
     var towStatus: String?

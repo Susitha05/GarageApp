@@ -58,6 +58,10 @@
 		D7976B1E3095AEDC00B4F357 /* NoShowClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D7976B1D3095AEDC00B4F357 /* NoShowClassifier.mlmodel */; };
 		D7976B203095AEE700B4F357 /* RevenueForecaster.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D7976B1F3095AEE700B4F357 /* RevenueForecaster.mlmodel */; };
 		D7976B223095B80A00B4F357 /* Addserviceview .swift in Sources */ = {isa = PBXBuildFile; fileRef = D7976B213095B80A00B4F357 /* Addserviceview .swift */; };
+		D7A19BF930960BE200466C67 /* Maintenancepredictortests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A19BF830960BE200466C67 /* Maintenancepredictortests.swift */; };
+		D7A19BFB30960C1500466C67 /* Locationmanagertests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A19BFA30960C1500466C67 /* Locationmanagertests.swift */; };
+		D7A19BFD30960C5B00466C67 /* Appstatelogictests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A19BFC30960C5B00466C67 /* Appstatelogictests.swift */; };
+		D7A19BFF30960C9400466C67 /* Widgetsnapshottests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A19BFE30960C9400466C67 /* Widgetsnapshottests.swift */; };
 		D7BF868F309049DA00511291 /* firestore.rules in Resources */ = {isa = PBXBuildFile; fileRef = D7BF868E309049DA00511291 /* firestore.rules */; };
 		D7BF869130904AC600511291 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7BF869030904AC600511291 /* GoogleService-Info.plist */; };
 		D7BF8696309050D800511291 /* AuthComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BF8695309050D800511291 /* AuthComponents.swift */; };
@@ -175,6 +179,10 @@
 		D7976B1D3095AEDC00B4F357 /* NoShowClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NoShowClassifier.mlmodel; sourceTree = "<group>"; };
 		D7976B1F3095AEE700B4F357 /* RevenueForecaster.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RevenueForecaster.mlmodel; sourceTree = "<group>"; };
 		D7976B213095B80A00B4F357 /* Addserviceview .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Addserviceview .swift"; sourceTree = "<group>"; };
+		D7A19BF830960BE200466C67 /* Maintenancepredictortests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maintenancepredictortests.swift; sourceTree = "<group>"; };
+		D7A19BFA30960C1500466C67 /* Locationmanagertests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locationmanagertests.swift; sourceTree = "<group>"; };
+		D7A19BFC30960C5B00466C67 /* Appstatelogictests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appstatelogictests.swift; sourceTree = "<group>"; };
+		D7A19BFE30960C9400466C67 /* Widgetsnapshottests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgetsnapshottests.swift; sourceTree = "<group>"; };
 		D7BF868E309049DA00511291 /* firestore.rules */ = {isa = PBXFileReference; lastKnownFileType = text; path = firestore.rules; sourceTree = "<group>"; };
 		D7BF869030904AC600511291 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7BF8695309050D800511291 /* AuthComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComponents.swift; sourceTree = "<group>"; };
@@ -325,6 +333,10 @@
 			isa = PBXGroup;
 			children = (
 				D76B6500308DE06500FECADB /* GarageAppTests.swift */,
+				D7A19BF830960BE200466C67 /* Maintenancepredictortests.swift */,
+				D7A19BFA30960C1500466C67 /* Locationmanagertests.swift */,
+				D7A19BFC30960C5B00466C67 /* Appstatelogictests.swift */,
+				D7A19BFE30960C9400466C67 /* Widgetsnapshottests.swift */,
 			);
 			path = GarageAppTests;
 			sourceTree = "<group>";
@@ -656,7 +668,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7A19BF930960BE200466C67 /* Maintenancepredictortests.swift in Sources */,
 				D76B6501308DE06500FECADB /* GarageAppTests.swift in Sources */,
+				D7A19BFF30960C9400466C67 /* Widgetsnapshottests.swift in Sources */,
+				D7A19BFD30960C5B00466C67 /* Appstatelogictests.swift in Sources */,
+				D7A19BFB30960C1500466C67 /* Locationmanagertests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
