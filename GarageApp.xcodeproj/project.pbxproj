@@ -32,6 +32,7 @@
 		D73E773D3094F95F007E7E58 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B1FA9308E50FB008C3A39 /* WidgetSnapshot.swift */; };
 		D73E77453094FA86007E7E58 /* GarageStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E77413094F9EB007E7E58 /* GarageStatusWidget.swift */; };
 		D73E77463094FA8B007E7E58 /* GarageWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E77433094FA21007E7E58 /* GarageWidgetBundle.swift */; };
+		D73E774C30957FAF007E7E58 /* Sirishortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E774B30957FAF007E7E58 /* Sirishortcuts.swift */; };
 		D76B64EC308DE06100FECADB /* GarageAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64EB308DE06100FECADB /* GarageAppApp.swift */; };
 		D76B64EE308DE06100FECADB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64ED308DE06100FECADB /* ContentView.swift */; };
 		D76B64F0308DE06100FECADB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76B64EF308DE06100FECADB /* Item.swift */; };
@@ -138,6 +139,8 @@
 		D73E772E3094F676007E7E58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D73E77413094F9EB007E7E58 /* GarageStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageStatusWidget.swift; sourceTree = "<group>"; };
 		D73E77433094FA21007E7E58 /* GarageWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageWidgetBundle.swift; sourceTree = "<group>"; };
+		D73E774B30957FAF007E7E58 /* Sirishortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sirishortcuts.swift; sourceTree = "<group>"; };
+		D73E774D30958293007E7E58 /* GarageWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GarageWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D76B64E8308DE06100FECADB /* GarageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarageApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76B64EB308DE06100FECADB /* GarageAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageAppApp.swift; sourceTree = "<group>"; };
 		D76B64ED308DE06100FECADB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -255,6 +258,7 @@
 		D76B64DF308DE06100FECADB = {
 			isa = PBXGroup;
 			children = (
+				D73E774D30958293007E7E58 /* GarageWidgetExtension.entitlements */,
 				D76B64EA308DE06100FECADB /* GarageApp */,
 				D76B64FF308DE06500FECADB /* GarageAppTests */,
 				D76B6509308DE06500FECADB /* GarageAppUITests */,
@@ -293,6 +297,7 @@
 				D76B64F7308DE06400FECADB /* Info.plist */,
 				D76B64F3308DE06400FECADB /* Preview Content */,
 				D7BF868E309049DA00511291 /* firestore.rules */,
+				D73E774B30957FAF007E7E58 /* Sirishortcuts.swift */,
 			);
 			path = GarageApp;
 			sourceTree = "<group>";
@@ -590,6 +595,7 @@
 				D73B1F86308DE905008C3A39 /* VehicleListView.swift in Sources */,
 				D76B64EE308DE06100FECADB /* ContentView.swift in Sources */,
 				D7C0E8E13091A4F400CEC9E7 /* CloudStore.swift in Sources */,
+				D73E774C30957FAF007E7E58 /* Sirishortcuts.swift in Sources */,
 				D7C0E8E53091A5EE00CEC9E7 /* EmailService.swift in Sources */,
 				D7C0E8DF3091A3CA00CEC9E7 /* ReceiptBuilderView.swift in Sources */,
 				D76B64F0308DE06100FECADB /* Item.swift in Sources */,
@@ -674,6 +680,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = GarageWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R666JHJ33X;
@@ -703,6 +710,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = GarageWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R666JHJ33X;
@@ -850,6 +858,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = GarageApp/GarageApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -884,6 +893,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = GarageApp/GarageApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

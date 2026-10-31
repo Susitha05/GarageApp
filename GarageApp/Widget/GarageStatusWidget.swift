@@ -40,50 +40,51 @@ struct GarageStatusWidgetView: View {
 
     var body: some View {
         let s = entry.snapshot
-        switch family {
-        case .accessoryInline:
-            Text("\(s.topPart): \(dueText(s.dueInKm))")
+        Group {
+            switch family {
+            case .accessoryInline:
+                Text("\(s.topPart): \(dueText(s.dueInKm))")
 
-        case .accessoryCircular:
-            ZStack {
-                AccessoryWidgetBackground()
-                VStack(spacing: 0) {
-                    Image(systemName: "wrench.fill")
-                    Text(s.risk.prefix(1)).font(.headline)
+            case .accessoryCircular:
+                ZStack {
+                    AccessoryWidgetBackground()
+                    VStack(spacing: 0) {
+                        Image(systemName: "wrench.fill")
+                        Text(s.risk.prefix(1)).font(.headline)
+                    }
                 }
-            }
 
-        case .accessoryRectangular:
-            VStack(alignment: .leading, spacing: 2) {
-                Label(s.topPart, systemImage: "wrench.fill").font(.headline)
-                Text(dueText(s.dueInKm)).font(.caption)
-                if let t = s.nextAppointmentTitle { Text(t).font(.caption2).lineLimit(1) }
-            }
+            case .accessoryRectangular:
+                VStack(alignment: .leading, spacing: 2) {
+                    Label(s.topPart, systemImage: "wrench.fill").font(.headline)
+                    Text(dueText(s.dueInKm)).font(.caption)
+                    if let t = s.nextAppointmentTitle { Text(t).font(.caption2).lineLimit(1) }
+                }
 
-        case .systemMedium:
-            HStack(alignment: .top, spacing: 16) {
+            case .systemMedium:
+                HStack(alignment: .top, spacing: 16) {
+                    maintenanceBlock(s)
+                    Divider()
+                    VStack(alignment: .leading, spacing: 6) {
+                        Label("Next booking", systemImage: "calendar").font(.caption.bold()).foregroundStyle(.secondary)
+                        if let t = s.nextAppointmentTitle, let d = s.nextAppointmentDate {
+                            Text(t).font(.subheadline.weight(.semibold)).lineLimit(2)
+                            Text(d, style: .date).font(.caption).foregroundStyle(.secondary)
+                        } else {
+                            Text("None scheduled").font(.subheadline).foregroundStyle(.secondary)
+                        }
+                        if let tow = s.towStatus {
+                            Label("Tow: \(tow)", systemImage: "truck.box.fill").font(.caption).foregroundStyle(.blue)
+                        }
+                    }
+                    Spacer(minLength: 0)
+                }
+
+            default:
                 maintenanceBlock(s)
-                Divider()
-                VStack(alignment: .leading, spacing: 6) {
-                    Label("Next booking", systemImage: "calendar").font(.caption.bold()).foregroundStyle(.secondary)
-                    if let t = s.nextAppointmentTitle, let d = s.nextAppointmentDate {
-                        Text(t).font(.subheadline.weight(.semibold)).lineLimit(2)
-                        Text(d, style: .date).font(.caption).foregroundStyle(.secondary)
-                    } else {
-                        Text("None scheduled").font(.subheadline).foregroundStyle(.secondary)
-                    }
-                    if let tow = s.towStatus {
-                        Label("Tow: \(tow)", systemImage: "truck.box.fill").font(.caption).foregroundStyle(.blue)
-                    }
-                }
-                Spacer(minLength: 0)
             }
-            .containerBackground(.fill.tertiary, for: .widget)
-
-        default: // systemSmall
-            maintenanceBlock(s)
-                .containerBackground(.fill.tertiary, for: .widget)
         }
+        .containerBackground(.fill.tertiary, for: .widget)
     }
 
     private func maintenanceBlock(_ s: WidgetSnapshot) -> some View {
